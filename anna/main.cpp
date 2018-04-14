@@ -20,7 +20,6 @@
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
-    //if(QString(qVersion()) >= "4.8.0")
         QApplication::setAttribute((Qt::ApplicationAttribute)11);
 	QApplication *a = createApplication(argc, argv);
 	a->setApplicationName(APPLICATION_NAME);
