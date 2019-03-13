@@ -1,0 +1,25 @@
+Format: 1.8
+Date: Tue, 12 Mar 2019 16:32:45 +0800
+Source: verena
+Binary: verena
+Architecture: armel
+Version: 0.9.0harmattan1
+Distribution: unstable
+Urgency: low
+Maintainer: Karin Zhao <beyondk2000@gmail.com>
+Changed-By: Karin Zhao <beyondk2000@gmail.com>
+Description: 
+ verena     - Verena is a web-video player.
+Changes: 
+ verena (0.9.0harmattan1) unstable; urgency=low
+ .
+   * Fixed youku parse script (2019/02/09). But it return '403', can play it with system media player, but can not download it.
+   * Add YoukuClient of Harmattan main page.
+   * Add settings on player page.
+Checksums-Sha1: 
+ f6572f630d5869139c008550bec5398c3530e583 546906 verena_0.9.0harmattan1_armel.deb
+Checksums-Sha256: 
+ f64f2f3c23d06481920b18dfd9f195deddafba0a759f5699ad4ff25e36f04c99 546906 verena_0.9.0harmattan1_armel.deb
+Files: 
+ 9508ba615e10b25d2caae930746b67d2 546906 user/other optional verena_0.9.0harmattan1_armel.deb
+Maemo-Display-Name: verena

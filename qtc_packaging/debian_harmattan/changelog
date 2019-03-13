@@ -1,0 +1,173 @@
+verena (0.9.0harmattan1) unstable; urgency=low
+
+  * Fixed youku parse script (2019/02/09). But it return '403', can play it with system media player, but can not download it.
+  * Add YoukuClient of Harmattan main page.
+  * Add settings on player page.
+
+ -- Karin Zhao <beyondk2000@gmail.com>  Tue, 12 Mar 2019 16:32:45 +0800
+
+verena (0.8.0harmattan1) unstable; urgency=low
+
+  * Fixed youku parse script (2018/02/07), but not stable.
+
+ -- Karin Zhao <beyondk2000@gmail.com>  Wed, 7 Feb 2018 09:20:17 +0800
+
+verena (0.7.9harmattan1) unstable; urgency=low
+
+  * Fixed youku parse script (2016/06/04).
+
+ -- Karin Zhao <beyondk2000@gmail.com>  Sun, 4 Jun 2017 23:46:14 +0800
+
+verena (0.7.8harmattan1) unstable; urgency=low
+
+  * Fixed youku parse script (2016/04/29).
+  * Fixed videos of other language.
+  * Other opmized.
+
+ -- Karin Zhao <beyondk2000@gmail.com>  Fri, 29 Aug 2017 12:18:52 +0800
+
+verena (0.7.7harmattan1) unstable; urgency=low
+
+  * Fixed youku parse script (2016/03/16).
+
+ -- Karin Zhao <beyondk2000@gmail.com>  Wed, 16 Mar 2016 18:17:32 +0800
+
+verena (0.7.6harmattan3) unstable; urgency=low
+
+  * Fixed youku parse script (2016/02/29 fixed mp4hd3).
+  * Remove other video sources.
+  * Fixed up getting related videos.
+  * Videos of show order by video sequence desc.
+  * Add search videos by tags.
+  * Other opmized.
+  * UNDO: DeveloperMode.qml GeneralVerenaPlayer.qml LauncherPage.qml
+  * HAS SOME BUGS.
+
+ -- Karin Zhao <beyondk2000@gmail.com>  Sat, 27 Feb 2016 09:26:56 +0800
+
+verena (0.7.4harmattan1) unstable; urgency=low
+
+  * Add execute KMPlayer for playing videos.
+  * Add 3-Screen in Verena Touch Home. And notification page list your options, swipe switcher page list videos played.
+  * Opmized Verena Browser. And add a helper tools.
+  * Changed parsing LeTV video 350P.
+  * Fixed text show exception in some selection dialog.
+  * Other opmized.
+
+ -- Karin Zhao <beyondk2000@gmail.com>  Mon, 19 Apr 2015 14:26:56 +0800
+
+verena (0.7.1harmattan3) unstable; urgency=low
+
+  * Add download history record.
+  * Support resume broken download.
+  * Add a internal sample web browser, and parse video address form URL of youku, acfun, letv and tencent.
+  * Add a new home page likes Harmattan MeeGo Touch Home.
+  * Fixed to parse youku 3gp video.
+  * Fixed a player and other bugs.
+  * Other opmized.
+
+ -- Karin Zhao <beyondk2000@gmail.com>  Mon, 6 Apr 2015 12:26:56 +0800
+
+verena (0.5.9harmattan3) unstable; urgency=low
+
+  * Support to parse all streamtypes url of video, included 3gphd, mp4, flv, 3gp, hd2, hd3.Auto parse order: 3gphd -> mp4 -> flv -> 3gp -> hd2 -> hd3
+  * Add a little player in video detail page.
+  * Support to play video one-by-one that has some parts, and download multi-parts video.
+  * Add a Dev-Mode, Support to execute external editors like Vim, Vi, nano with root or non-root.
+  * Support to add local collection that order by collecting time and user ranking, include video, show, playlist and user, local collection page supports to fast scroll and sort by collecting time or user ranking in list.
+  * Support jump-page in list that multi-page.
+  * Other opmized.
+
+ -- Karin Zhao <beyondk2000@gmail.com>  Sun, 15 Mar 2015 11:55:35 +0800
+
+verena (0.5.0harmattan1) unstable; urgency=low
+
+  * Add view playlists by categoty.
+  * Add show relate videos list when this video play to end of media.
+  * Add search user detail and view user's videos and playlist.
+  * Add get comments of video.
+  * Get video/show/playlist category from server.
+  * New home page.
+  * Optimize search page and keyword history.
+  * Some optimizes.
+
+ -- Karin Zhao <beyondk2000@gmail.com>  Thu, 26 Feb 2015 10:45:59 +0800
+
+verena (0.3.3harmattan2) unstable; urgency=low
+
+  * Add internal simple video player.
+  * Add set default video player.
+  * Some optimizes in Qml.
+
+ -- Karin Zhao <beyondk2000@gmail.com>  Tue, 10 Feb 2015 22:20:22 +0800
+
+verena (0.3.1harmattan2) unstable; urgency=low
+
+  * Support search shows by keyword or category, and list episodes of the show.
+  * Add record/clear search keyword history list that not more than 20 to local.
+  * Add update button in some page of result for flushing when server returns error.
+  * Add show count of result when search by keyword or category.
+  * Fixed application abort when parsing video url for playing/downloading video file.
+  * Change show big thumbnail in video detail page.
+  * Other optimizes.
+
+ -- Karin Zhao <beyondk2000@gmail.com>  Fri, 06 Feb 2015 21:35:25 +0800
+
+verena (0.3.0harmattan1) unstable; urgency=low
+
+  * Support search shows by keyword or category, and list episodes of the show.
+  * Add record/clear search keyword history list that not more than 20 to local.
+  * Add update button in some page of result for flushing when server returns error.
+  * Add show count of result when search by keyword or category.
+  * Change show big thumbnail in video detail page.
+  * Other optimizes.
+
+ -- Karin Zhao <beyondk2000@gmail.com>  Mon, 25 Jan 2015 19:16:56 +0800
+
+verena (0.2.1harmattan2) unstable; urgency=low
+
+  * Fix Bug: "The GUI thread changes dead when play video."
+  * Add multi task download of video support(testing).
+  * Optimize Qml GUI.
+  * Add update home page button.
+  * Support copy video file url to clipboard.
+  * Add check/clean disk cache info.
+  * Other bugs fixed.
+  * Other optimizes.
+
+ -- Karin Zhao <beyondk2000@gmail.com>  Sun, 2 Feb 2015 7:30:07 +0800
+
+verena (0.2.0) unstable; urgency=low
+
+  * Fix Bug: "The GUI thread changes dead when play video."
+  * Add multi task download of video support(testing).
+  * Add update home page button.
+  * Support copy video file url to clipboard.
+  * Add check/clean disk cache info.
+  * Other bugs fixed.
+  * Other optimizes.
+
+ -- Karin Zhao <beyondk2000@gmail.com>  Thu, 22 Jan 2015 23:03:44 +0800
+
+verena (0.1.1) unstable; urgency=low
+
+  * Add disk cache.
+  * Other optimizes.
+
+ -- Karin Zhao <beyondk2000@gmail.com>  Mon, 19 Jan 2015 20:32:34 +0800
+
+verena (0.1.0) unstable; urgency=low
+
+  * Add home page.
+  * Support search with order.
+  * Add Chinese i18n.
+  * Use harmattan video-suite instead of grob browser to play web video.
+  * Other optimizes.
+
+ -- Karin Zhao <beyondk2000@gmail.com>  Sat, 17 Jan 2015 19:35:23 +0800
+
+verena (0.0.1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Karin Zhao <beyondk2000@gmail.com>  Fri, 16 Jan 2015 09:29:01 +0800
