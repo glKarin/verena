@@ -17,9 +17,9 @@ Changes:
    * Add YoukuClient of Harmattan main page.
    * Add settings on player page.
 Checksums-Sha1: 
- f6572f630d5869139c008550bec5398c3530e583 546906 verena_0.9.0harmattan1_armel.deb
+ 19d39bcb2621cc9810953d4a34739648e57b879b 552176 verena_0.9.0harmattan1_armel.deb
 Checksums-Sha256: 
- f64f2f3c23d06481920b18dfd9f195deddafba0a759f5699ad4ff25e36f04c99 546906 verena_0.9.0harmattan1_armel.deb
+ 16e6fb972bc27cb494393a40d0ff59e74b8bc270ffced6f5371e0182a5b58588 552176 verena_0.9.0harmattan1_armel.deb
 Files: 
- 9508ba615e10b25d2caae930746b67d2 546906 user/other optional verena_0.9.0harmattan1_armel.deb
+ cc48b17b8da0ef02fb7c35c9cef171d4 552176 user/other optional verena_0.9.0harmattan1_armel.deb
 Maemo-Display-Name: verena

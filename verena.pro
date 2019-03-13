@@ -135,15 +135,15 @@ contains(MEEGO_EDITION,harmattan){
 
 	CONFIG += qdeclarative-boostable
 	CONFIG += videosuiteinterface-maemo-meegotouch  #video suite
-	CONFIG += meegotouch
+        CONFIG += meegotouch
 	splash.files = res/verena_splash.png
 	splash.path = /opt/verena/res
 	INSTALLS += splash
 	#CONFIG += debug_and_release
 
-	translation.files = i18n/verena.zh_CN.ts i18n/verena.zh_CN.qm
+        translation.files = i18n/verena.zh_CN.ts i18n/verena.zh_CN.qm
 	translation.path = /opt/verena/i18n
-	INSTALLS += translation
+        INSTALLS += translation
 
 	OTHER_FILES += \
 			qtc_packaging/debian_harmattan/rules \
@@ -152,15 +152,11 @@ contains(MEEGO_EDITION,harmattan){
 			qtc_packaging/debian_harmattan/copyright \
 			qtc_packaging/debian_harmattan/control \
 			qtc_packaging/debian_harmattan/compat \
-			qtc_packaging/debian_harmattan/changelog
+                        qtc_packaging/debian_harmattan/changelog
 
-    icon.files = verena.png
-    icon.path = /usr/share/icons/hicolor/80x80/apps
-    INSTALLS += icon
-
-		folder_01.source = qml/verena
-		folder_01.target = qml
-		DEPLOYMENTFOLDERS = folder_01
+                folder_01.source = qml/verena
+                folder_01.target = qml
+                DEPLOYMENTFOLDERS = folder_01
 }
 
 folder_js.source = qml/js
@@ -172,3 +168,9 @@ DEPLOYMENTFOLDERS += folder_js folder_img
 # Please do not modify the following two lines. Required for deployment.
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
 qtcAddDeployment()
+
+contains(MEEGO_EDITION,harmattan){
+    icon.files = verena.png
+    icon.path = /usr/share/icons/hicolor/80x80/apps
+    INSTALLS += icon
+}
