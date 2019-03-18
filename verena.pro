@@ -83,7 +83,7 @@ simulator{
 
 	my_deployment.pkg_prerules += vendorinfo
 	DEPLOYMENT += my_deployment
-        VERSION = 0.9.011
+        VERSION = 0.9.021
 	# Symbian have a different syntax
 	#DEFINES -= VER=\\\"$$VERSION\\\"
 	DEFINES += VER=\"$$VERSION\"
@@ -117,7 +117,7 @@ symbian {
 
 	my_deployment.pkg_prerules += vendorinfo
 	DEPLOYMENT += my_deployment
-	VERSION = 0.9.01
+        VERSION = 0.9.02
 	# Symbian have a different syntax
 	#DEFINES -= VER=\\\"$$VERSION\\\"
 	DEFINES += VER=\"$$VERSION\"

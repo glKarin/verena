@@ -27,7 +27,7 @@
 #define APPLICATION_TMO "http://talk.maemo.org/member.php?u=70254"
 
 #define APPLICATION_NAME "verena"
-#define APPLICATION_VERSION "0.9.0harmattan1"
+#define APPLICATION_VERSION "0.9.0harmattan2"
 #define APPLICATION_DEVELOPER "Karin"
 #define APPLICATION_STATE "devel"
 #define APPLICATION_MAIL "beyondk2000@gmail.com"

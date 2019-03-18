@@ -57,7 +57,7 @@
 	initSettingMap.insert(SETTING_YOUKU_CLIENT_IP, QVariant("192.168.1.1"));
 	initSettingMap.insert(SETTING_YOUKU_CKEY, QVariant("DIl58SLFxFNndSV1GFNnMQVYkx1PP5tKe1siZu/86PR1u/Wh1Ptd+WOZsHHWxysSfAOhNJpdVWsdVJNsfJ8Sxd8WKVvNfAS8aS8fAOzYARzPyPc3JvtnPHjTdKfESTdnuTW6ZPvk2pNDh4uFzotgdMEFkzQ5wZVXl2Pf1/Y6hLK0OnCNxBj3+nb0v72gZ6b0td+WOZsHHWxysSo/0y9D2K42SaB8Y/+aD2K42SaB8Y/+ahU+WOZsHcrxysooUeND"));
 	initSettingMap.insert(SETTING_YOUKU_UA, QVariant("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36"));
-  initSettingMap.insert(SETTING_YOUKU_REFERER, QVariant("https://tv.youku.com"));
+    initSettingMap.insert(SETTING_YOUKU_REFERER, QVariant("http://v.youku.com"));
 	// initSettingMap.insert("youku_ccode_tv", QVariant("0590"));
 	// initSettingMap.insert("youku_ccode_tudou", QVariant("0512"));
 	
