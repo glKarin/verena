@@ -38,7 +38,7 @@ var YoukuParser_new = function(){
 		var req = new NetworkRequest("GET", ETAG_URL);
 		req.sendRequest(function(text, cb, header){
 			var utid = GetCna(text, header);
-			var ts = new Date().getTime().toString();
+            var ts = (new Date().getTime() / 1000).toString();
 			//var url = GETVIDEO_URL_FMT.arg(Youku_HandleVID(videoId)).arg(CCODE).arg(CLIENT_IP).arg(utid).arg(ts).arg(encodeURI(CKEY));
 
 			var opt = {
