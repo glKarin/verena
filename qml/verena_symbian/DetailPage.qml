@@ -385,7 +385,7 @@ VerenaPage{
 		z:1;
 		AutoMoveText{
 			id:name;
-			pixelSize:20;
+			pixelSize: constants.pixel_xl;
 			color:"blue";
 			anchors.verticalCenter:parent.verticalCenter;
 			width:parent.width;
@@ -511,11 +511,9 @@ VerenaPage{
 							maximumLineCount:2;
 							wrapMode:Text.WrapAnywhere;
 							elide:Text.ElideRight;
-							font.pixelSize:18;
+							font.pixelSize: constants.pixel_xl;
 							font.bold: true;
 							text: qobj.username;
-
-							font.family: "Nokia Pure Text";
 						}
 						VButton{
 							width:parent.width;
@@ -560,11 +558,9 @@ VerenaPage{
 						id:comment;
 						width:parent.width;
 						color: "black"; //color:parent.ListView.isCurrentItem?"red":"black";
-						font.pixelSize:16;
+						font.pixelSize: constants.pixel_large;
 						wrapMode:Text.WordWrap;
 						text:"<b>" + model.username + ": </b>" + model.content;
-
-						font.family: "Nokia Pure Text";
 					}
 					MouseArea{
 						anchors.fill:parent;
@@ -638,7 +634,7 @@ VerenaPage{
 			platformStyle: VButtonStyle {
 				buttonWidth: buttonHeight; 
 			}
-			iconSource: "toolbar-mediacontrol-play";
+			iconSource_2: "image://theme/icon-m-toolbar-mediacontrol-play";
 			enabled:qobj.internalVideoId.length !== 0;
 			onClicked:{
 				mainpage.addSwipeSwitcher(qobj.vtitle, qobj.thumbnail, qobj.internalVideoId, "youku");
@@ -649,13 +645,13 @@ VerenaPage{
 		}
 		ToolIcon{
 			enabled:qobj.internalVideoId.length !== 0;
-			iconId: qobj.isCollected ? "toolbar-delete" : "toolbar-add";
+			iconId: qobj.isCollected ? "toolbar-favorite-mark" : "toolbar-favorite-unmark";
 			onClicked:{
 				qobj.addOrRemoveCollection();
 			}
 		}
 		ToolIcon{
-			iconId: "toolbar-list";
+			iconId: "toolbar-directory-move-to";
 			onClicked:{
 				var page = Qt.createComponent(Qt.resolvedUrl("DownloadPage.qml"));
 				pageStack.push(page);

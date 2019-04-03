@@ -30,7 +30,7 @@ Dialog {
 					maximumLineCount: 2;
 					elide: Text.ElideRight;
 					wrapMode: Text.WordWrap;
-					font.pixelSize:28;
+					font.pixelSize: constants.pixel_xl;
 					font.bold: true;
 					color:"deeppink";
 				}

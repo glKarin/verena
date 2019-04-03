@@ -31,7 +31,7 @@ VerenaDialog {
 				height:90;
 				Text{
 					anchors.verticalCenter:parent.verticalCenter;
-					font.pixelSize:24;
+					font.pixelSize: constants.pixel_xl;
 					color:"white";
 					text:root.url;
 					clip:true;

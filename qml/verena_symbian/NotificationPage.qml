@@ -110,8 +110,6 @@ Item{
 							color:dayLabelColor;
 							font.pixelSize:dayLabelFontSize;
 							text:Qt.formatDateTime(new Date(), "dddd");
-
-							font.family: "Nokia Pure Text";
 						}
 					}
 					Item{
@@ -124,8 +122,6 @@ Item{
 							font.pixelSize:dateLabelFontSize;
 							text:Qt.formatDateTime(new Date(), "MMMM d, yyyy");
 							font.weight:Font.Light;
-
-							font.family: "Nokia Pure Text";
 						}
 					}
 				}
@@ -147,8 +143,6 @@ Item{
 					font.weight:Font.Bold;
 					color:notificationsTextColor;
 					font.pixelSize:20;
-
-					font.family: "Nokia Pure Text";
 				}
 				VTHomeButton{
 					anchors.verticalCenter:parent.verticalCenter;
@@ -242,8 +236,6 @@ Item{
 								elide:Text.ElideRight;
 								text:model.content;
 								wrapMode:Text.WordWrap;
-
-								font.family: "Nokia Pure Text";
 							}
 							Text{
 								width:parent.width;
@@ -251,8 +243,6 @@ Item{
 								color:itemFooterColor;
 								font.pixelSize:itemFooterSize;
 								text:model.title;
-
-								font.family: "Nokia Pure Text";
 							}
 							Text{
 								width:parent.width;
@@ -260,8 +250,6 @@ Item{
 								color:itemFooterColor;
 								font.pixelSize:itemFooterSize;
 								text:model.timestamp;
-
-								font.family: "Nokia Pure Text";
 							}
 						}
 						MouseArea{

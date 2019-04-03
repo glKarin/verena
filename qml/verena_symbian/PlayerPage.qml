@@ -417,7 +417,7 @@ Page{
 		platformStyle: VButtonStyle {
 			buttonWidth: buttonHeight; 
 		}
-		iconSource: "toolbar-refresh";
+		iconSource_2: "image://theme/icon-m-toolbar-refresh";
 		enabled:visible;
 		visible:!qobj.loaded;
 		z: 30;
@@ -518,7 +518,7 @@ Page{
 		}
 		ToolIcon{
 			id:closeicon;
-			iconId: "toolbar-next";
+			iconId: "toolbar-close";
 			anchors.left:parent.left;
 			anchors.top:parent.top;
 			width:60;
@@ -572,11 +572,9 @@ Page{
 				Text{
 					width: logcol.width;
 					height:25;
-					font.pixelSize:20;
+					font.pixelSize: constants.pixel_xl;
 					color:"white";
 					text:model.value;
-
-					font.family: "Nokia Pure Text";
 				}
 			}
 		}

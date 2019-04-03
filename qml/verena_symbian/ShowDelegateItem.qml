@@ -32,13 +32,11 @@ Rectangle{
 			horizontalAlignment: Text.AlignHCenter;
 			verticalAlignment: Text.AlignVCenter;
 			color:"black";
-			font.pixelSize:16;
+			font.pixelSize: constants.pixel_large;
 			elide:Text.ElideRight;
 			text:model.name;
 			//wrapMode:Text.WrapAnywhere;
 			//maximumLineCount: 2;
-
-			font.family: "Nokia Pure Text";
 		}
 		Button{
 			width:parent.width;

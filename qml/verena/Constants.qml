@@ -29,4 +29,17 @@ QtObject{
 	property int user_avatar_image_width: 160;
 	property int max_height: 854; // screen.displayHeight
 	property int max_width: 480; // screen.displayWidth
+
+	// font, based on MeeGo Harmattan
+	property int pixel_micro: 10;
+	property int pixel_tiny: 12;
+	property int pixel_small: 16;
+	property int pixel_medium: 18;
+	property int pixel_large: 20;
+	property int pixel_xl: 24;
+	property int pixel_xxl: 32;
+	property int pixel_xxxl: 36;
+	property int pixel_big: 40;
+	property int pixel_toobig: 48;
+	property int pixel_super: 64;
 }

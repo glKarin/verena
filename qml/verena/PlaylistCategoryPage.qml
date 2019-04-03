@@ -92,7 +92,7 @@ VerenaPage{
 								horizontalAlignment: Text.AlignHCenter;
 								verticalAlignment: Text.AlignVCenter;
 								color:parent.parent.ListView.isCurrentItem ? "red" : "white";
-								font.pixelSize:24;
+								font.pixelSize: constants.pixel_xl;
 								elide:Text.ElideRight;
 								text:model.name;
 							}
@@ -175,7 +175,7 @@ VerenaPage{
 						horizontalAlignment: Text.AlignHCenter;
 						verticalAlignment: Text.AlignVCenter;
 						wrapMode: Text.WordWrap;
-            font.pixelSize:24;
+            font.pixelSize: constants.pixel_xl;
             text: qsTr("Result") + ": " + qobj.total + "   " + qsTr("Limit") + ": " + qobj.count +  "   " + qsTr("Page") + ": " + qobj.playlistPage + "/" + qobj.playlistMaxPage;
         }
 	}

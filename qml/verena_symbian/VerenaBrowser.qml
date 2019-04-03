@@ -258,7 +258,7 @@ VerenaPage{
 			anchors.topMargin:progressbar.height / 3 * 2;
 			ToolIcon{
 				id:back;
-				iconId: "toolbar-previous";
+				iconId: "toolbar-tab-previous";
 				anchors.verticalCenter: parent.verticalCenter;
 				width:40;
 				height:width;
@@ -273,7 +273,7 @@ VerenaPage{
 			}
 			ToolIcon{
 				id:forward;
-				iconId: "toolbar-next";
+				iconId: "toolbar-tab-next";
 				anchors.verticalCenter: parent.verticalCenter;
 				width:40;
 				height:width;
@@ -323,7 +323,7 @@ VerenaPage{
 			}
 			ToolIcon{
 				id:actions;
-				iconId:webpagegroup.currentTab && webpagegroup.currentTab.progress === 1.0 ? "toolbar-refresh" : "toolbar-mediacontrol-pause";
+				iconId:webpagegroup.currentTab && webpagegroup.currentTab.progress === 1.0 ? "toolbar-refresh" : "toolbar-stop";
 				enabled:webpagegroup.currentTab !== null;
 				visible:enabled;
 				width:40;
@@ -362,7 +362,7 @@ VerenaPage{
 				Text{
 					anchors.verticalCenter:parent.verticalCenter;
 					color:"white";
-					font.pixelSize:22;
+					font.pixelSize: constants.pixel_large;
 					clip:true;
 					width:parent.width;
 					elide:Text.ElideMiddle;
@@ -387,7 +387,7 @@ VerenaPage{
 				Text{
 					anchors.verticalCenter:parent.verticalCenter;
 					color:"white";
-					font.pixelSize:22;
+					font.pixelSize: constants.pixel_large;
 					clip:true;
 					width:parent.width;
 					elide:Text.ElideMiddle;
@@ -472,7 +472,7 @@ VerenaPage{
 						height:45;
 						Text{
 							color:"white";
-							font.pixelSize:22;
+							font.pixelSize: constants.pixel_large;
 							anchors.centerIn:parent;
 							text:model.name;
 						}
@@ -533,7 +533,7 @@ VerenaPage{
 					anchors.left:parent.left;
 					width:parent.width - close.width;
 					color:parent.ListView.isCurrentItem ? "red" : "white";
-					font.pixelSize:20;
+					font.pixelSize: constants.pixel_medium;
 					elide:Text.ElideRight;
 					text:model.title;
 					clip:true;
@@ -591,7 +591,7 @@ VerenaPage{
 			}
 		}
 		ToolIcon{
-			iconId:"toolbar-search";
+			iconId:"toolbar-edit";
 			visible:!settingsObject.browserAutoParseVideo;
 			enabled:visible;
 			onClicked:{

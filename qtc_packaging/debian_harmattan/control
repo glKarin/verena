@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Karin Zhao <beyondk2000@gmail.com>
 Build-Depends: debhelper (>= 5), libqt4-dev, libqjson-dev
 Standards-Version: 3.7.3
-Homepage: <https://www.facebook.com/profile.php?id=100005131424444>
+Homepage: https://www.facebook.com/profile.php?id=100005131424444
 
 Package: verena
 Architecture: any

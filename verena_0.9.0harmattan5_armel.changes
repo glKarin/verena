@@ -1,0 +1,24 @@
+Format: 1.8
+Date: Mon, 25 Mar 2019 13:48:14 +0800
+Source: verena
+Binary: verena
+Architecture: armel
+Version: 0.9.0harmattan5
+Distribution: unstable
+Urgency: low
+Maintainer: Karin Zhao <beyondk2000@gmail.com>
+Changed-By: Karin Zhao <beyondk2000@gmail.com>
+Description: 
+ verena     - Verena is a web-video player.
+Changes: 
+ verena (0.9.0harmattan5) unstable; urgency=low
+ .
+   * Fixed youku video downloading and playing with internal player (2019/03/25).
+   * Fixed breakpoint downloading error.
+Checksums-Sha1: 
+ a449ab60d92534691e2a79cc0955b3f05d93cc5c 583070 verena_0.9.0harmattan5_armel.deb
+Checksums-Sha256: 
+ 5b333ad2ccf076d4fcc6d96e98a1cae22d720aa46e43924c56a3228cbb977db7 583070 verena_0.9.0harmattan5_armel.deb
+Files: 
+ 00d072b3191761c1afbdee49f4e9791a 583070 user/other optional verena_0.9.0harmattan5_armel.deb
+Maemo-Display-Name: verena

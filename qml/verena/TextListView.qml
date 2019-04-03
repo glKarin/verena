@@ -17,7 +17,7 @@ Item{
 				Text{
 					id:info;
 					width:parent.width;
-					font.pixelSize:22;
+					font.pixelSize: constants.pixel_large;
 					wrapMode:Text.WordWrap;
 					text:"<b>" + model.name + ": </b>" + model.value;
 				}

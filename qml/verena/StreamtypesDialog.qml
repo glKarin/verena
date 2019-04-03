@@ -58,7 +58,7 @@ VerenaDialog {
 										height:60;
 										Text{
 											anchors.fill: parent;
-											font.pixelSize: 24;
+											font.pixelSize:  constants.pixel_xl;
 											color: model.url.length ? "white" : "red";
 											//text: model.url.length ? model.title + "[" + model.name + "]" : "<s>" + model.title + "[" + model.name + "]</s>";
 											text: /* model.title + */ "[" + model.name + "]";

@@ -12,11 +12,11 @@ function castMS2S(t) {
 function getYoukuVideoIDFromLink(url) {
 	if(url){
         //var pattern = /^http:\/\/v.youku.com\/v_show\/id_([0-9a-zA-Z]+)(==|_.*)?\.html/;
-		var pattern = /^(http:\/\/|https:\/\/)?v.youku.com\/v_show\/id_([0-9a-zA-Z]+)(==|_.*)?\.html/;
+		var pattern = /^https?:\/\/v.youku.com\/v_show\/id_([0-9a-zA-Z]+)(==|_.*)?\.html/;
 		if (!url.match(pattern)) {
 			return "";
 		}
-		var videoId = url.match(pattern)[2];
+		var videoId = url.match(pattern)[1];
 		return videoId;
 	}else{
 		return ""

@@ -149,13 +149,11 @@ VerenaPage{
 							height:parent.height/3;
 							horizontalAlignment: Text.AlignHCenter;
 							verticalAlignment: Text.AlignVCenter;
-							font.pixelSize:20;
+							font.pixelSize: constants.pixel_xl;
 							wrapMode:Text.WrapAnywhere;
 							color:"black";
 							maximumLineCount:2;
 							text:model.name;
-
-							font.family: "Nokia Pure Text";
 						}
 						Row{
 							width:parent.width;
@@ -173,11 +171,9 @@ VerenaPage{
 									anchors.verticalCenter:parent.verticalCenter;
 									width:parent.width - parent.height;
 									clip:true;
-									font.pixelSize:18;
+									font.pixelSize: constants.pixel_large;
 									color:"black";
 									text:model.showcategory;
-
-									font.family: "Nokia Pure Text";
 								}
 							}
 							Row{
@@ -192,12 +188,10 @@ VerenaPage{
 								Text{
 									anchors.verticalCenter:parent.verticalCenter;
 									width:parent.width - parent.height;
-									font.pixelSize:18;
+									font.pixelSize: constants.pixel_large;
 									clip:true;
 									color:"black";
 									text:model.area;
-
-									font.family: "Nokia Pure Text";
 								}
 							}
 						}
@@ -217,11 +211,9 @@ VerenaPage{
 									anchors.verticalCenter:parent.verticalCenter;
 									width:parent.width - parent.height;
 									clip:true;
-									font.pixelSize:18;
+									font.pixelSize: constants.pixel_large;
 									color:"black";
 									text:model.published;
-
-									font.family: "Nokia Pure Text";
 								}
 							}
 							Row{
@@ -236,12 +228,10 @@ VerenaPage{
 								Text{
 									anchors.verticalCenter:parent.verticalCenter;
 									width:parent.width - parent.height;
-									font.pixelSize:18;
+									font.pixelSize: constants.pixel_large;
 									clip:true;
 									color:"black";
 									text:parseFloat(model.score).toFixed(1);
-
-									font.family: "Nokia Pure Text";
 								}
 							}
 						}
@@ -257,23 +247,19 @@ VerenaPage{
 							Text{
 								width:parent.width - parent.height;
 								anchors.verticalCenter:parent.verticalCenter;
-								font.pixelSize:18;
+								font.pixelSize: constants.pixel_large;
 								color:"black";
 								elide:Text.ElideRight;
 								text: model.view_count;
-
-								font.family: "Nokia Pure Text";
 							}
 						}
 						Text{
 							width:parent.width;
 							height:parent.height/6;
 							color:"black";
-							font.pixelSize:18;
+							font.pixelSize: constants.pixel_large;
 							elide:Text.ElideRight;
 							text:formatUpdateAndTotal(model.episode_updated, model.episode_count);
-
-							font.family: "Nokia Pure Text";
 						}
 					}
 				}
@@ -313,11 +299,9 @@ VerenaPage{
 						maximumLineCount: 2;
 						wrapMode: Text.WordWrap;
             elide:Text.ElideRight;
-            font.pixelSize:20;
+            font.pixelSize: constants.pixel_xl;
             text: qsTr("Result") + ": " + qobj.total + "   " + qsTr("Limit") + ": " + qobj.count + "   " + qsTr("Page") + ": " + qobj.showPage + "/" + qobj.showMaxPage;
-
 						color: "white";
-						font.family: "Nokia Pure Text";
         }
 	}
 	Component.onCompleted:{

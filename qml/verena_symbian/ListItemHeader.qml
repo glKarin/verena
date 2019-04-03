@@ -26,12 +26,10 @@ Item{
 				height: parent.height;
 				horizontalAlignment: Text.AlignLeft;
 				verticalAlignment: Text.AlignVCenter;
-				font.pixelSize:24;
+				font.pixelSize: constants.pixel_xl;
 				color:"blue";
 				font.bold: true;
 				text: root.text;
-
-				font.family: "Nokia Pure Text";
 			}
 			Rectangle{
 				id:space;
@@ -41,7 +39,7 @@ Item{
 			}
 			ToolIcon{
 				id:down;
-				iconId: root.item !== null && root.item.state === "show" ? "toolbar-previous" : "toolbar-next";
+				iconId: root.item !== null && root.item.state === "show" ? "toolbar-up" : "toolbar-down";
 				height:parent.height;
 				width:height;
 				enabled:root.item !== null;

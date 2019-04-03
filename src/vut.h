@@ -69,7 +69,9 @@ class VUT : public QObject
 		QVariant UserAgent() const;
 		QByteArray GetUserAgent(const QString &name) const;
 		int VDebug() const;
+		Q_INVOKABLE QString RandIP() const;
 		Q_INVOKABLE QString XXX(const QString &url) const;
+		Q_INVOKABLE QString FormatSize(qint64 size) const;
 
 	private:
 		VUT(QDeclarativeEngine *engine = 0, QObject *parent = 0);

@@ -77,7 +77,7 @@ VerenaPage{
 					platformStyle: VButtonStyle {
 						buttonWidth: buttonHeight; 
 					}
-					iconSource: "toolbar-search";
+					iconSource_2: "image://theme/icon-m-toolbar-search";
 					enabled:textfield.text.length !== 0;
 					onClicked:{
 						if(textfield.text.length !== 0) {
@@ -193,11 +193,9 @@ VerenaPage{
 					width:parent.width;
 					clip:true;
 					color:"white";
-					font.pixelSize:18;
+					font.pixelSize: constants.pixel_xl;
 					elide:Text.ElideRight;
                     text:model.keyword;
-
-					font.family: "Nokia Pure Text";
 				}
 				MouseArea{
 					anchors.fill:parent;
@@ -237,11 +235,9 @@ VerenaPage{
 			verticalAlignment: Text.AlignVCenter;
 			maximumLineCount: 2;
 			elide:Text.ElideRight;
-			font.pixelSize:16;
+			font.pixelSize: constants.pixel_large;
 			text:buttonrow.checkedButton === first ? qsTr("Press and hold item to remove") : "";
-
 			color: "white";
-			font.family: "Nokia Pure Text";
 		}
 	}
 

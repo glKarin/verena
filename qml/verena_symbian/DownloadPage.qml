@@ -274,11 +274,9 @@ VerenaPage{
 				Text{
 					width:root.width;
 					height:20;
-					font.pixelSize:16;
+					font.pixelSize: constants.pixel_large;
 					color:"white";
 					text:model.value;
-
-					font.family: "Nokia Pure Text";
 				}
 			}
 		}
@@ -330,7 +328,7 @@ VerenaPage{
 							anchors.centerIn: parent;
 							visible: parent.twidth === parent.width;
 							ToolIcon{
-								iconId: "toolbar-share";
+								iconId: "toolbar-mediacontrol-pause";
 								onClicked:{
 									freetoolbar.openToolBar();
 									vdlmanager.pauseTask(modelData.taskId);
@@ -383,13 +381,11 @@ VerenaPage{
 						height:40;
 						anchors.fill:parent;
 						color:qobj.setColor(modelData.state);
-						font.pixelSize:12;
+						font.pixelSize: constants.pixel_small;
 						elide:Text.ElideRight;
 						text:modelData.name;
 						maximumLineCount:2;
 						wrapMode:Text.WrapAnywhere;
-
-						font.family: "Nokia Pure Text";
 					}
 					ProgressBar{
 						anchors.centerIn:parent;
@@ -403,20 +399,16 @@ VerenaPage{
 						z:1;
 						opacity:0.6;
 						color:qobj.setColor(modelData.state);
-						font.pixelSize:28;
+						font.pixelSize: constants.pixel_xxl;
 						text:modelData.percent + "%";
-
-						font.family: "Nokia Pure Text";
 					}
 					Text{
 						height:30;
 						anchors.horizontalCenter:parent.horizontalCenter;
 						anchors.bottom:parent.bottom;
 						color:qobj.setColor(modelData.state);
-						font.pixelSize:20;
-						text:modelData.read + "/" + modelData.total;
-
-						font.family: "Nokia Pure Text";
+						font.pixelSize: constants.pixel_xl;
+						text:vut.FormatSize(modelData.read) + "/" + vut.FormatSize(modelData.total);
 					}
 				}
 			}
@@ -458,7 +450,7 @@ VerenaPage{
 								}
 							}
 							ToolIcon{
-								iconId: "toolbar-share";
+								iconId: "toolbar-cut-paste";
 								onClicked:{
 									freetoolbar.openToolBar();
 									vut.copyToClipboard(modelData.path);
@@ -492,7 +484,7 @@ VerenaPage{
 								}
 							}
 							ToolIcon{
-								iconId: "toolbar-mediacontrol-stop";
+								iconId: "toolbar-close";
 								onClicked:{
 									freetoolbar.openToolBar();
 									var sf = function(){
@@ -540,22 +532,18 @@ VerenaPage{
 							width:parent.width;
 							height:parent.height / 3 * 2;
 							color:qobj.setColor(modelData.state);
-							font.pixelSize:20;
+							font.pixelSize: constants.pixel_xl;
 							elide:Text.ElideRight;
 							text:modelData.name;
 							maximumLineCount:2;
 							wrapMode:Text.WrapAnywhere;
-
-							font.family: "Nokia Pure Text";
 						}
 						Text{
 							height:parent.height / 3;
 							anchors.horizontalCenter:parent.horizontalCenter;
 							color:qobj.setColor(modelData.state);
-							font.pixelSize:20;
-							text:qsTr("Size") + ": " + modelData.total;
-
-							font.family: "Nokia Pure Text";
+							font.pixelSize: constants.pixel_xl;
+							text:qsTr("Size") + ": " + vut.FormatSize(modelData.total);
 						}
 					}
 					Image{
@@ -644,13 +632,11 @@ VerenaPage{
 						height:40;
 						anchors.fill:parent;
 						color:qobj.setColor(modelData.state);
-						font.pixelSize:12;
+						font.pixelSize: constants.pixel_small;
 						elide:Text.ElideRight;
 						text:modelData.name;
 						maximumLineCount:2;
 						wrapMode:Text.WrapAnywhere;
-
-						font.family: "Nokia Pure Text";
 					}
 					ProgressBar{
 						anchors.centerIn:parent;
@@ -664,20 +650,16 @@ VerenaPage{
 						z:1;
 						opacity:0.6;
 						color:qobj.setColor(modelData.state);
-						font.pixelSize:28;
+						font.pixelSize: constants.pixel_xxl;
 						text:modelData.percent + "%";
-
-						font.family: "Nokia Pure Text";
 					}
 					Text{
 						height:30;
 						anchors.horizontalCenter:parent.horizontalCenter;
 						anchors.bottom:parent.bottom;
 						color:qobj.setColor(modelData.state);
-						font.pixelSize:20;
-						text:modelData.read + "/" + modelData.total;
-
-						font.family: "Nokia Pure Text";
+						font.pixelSize: constants.pixel_xl;
+						text:vut.FormatSize(modelData.read) + "/" + vut.FormatSize(modelData.total);
 					}
 					Image{
 						height:40;

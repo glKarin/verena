@@ -47,12 +47,10 @@ Item{
 					height: parent.height;
 					horizontalAlignment: Text.AlignLeft;
 					verticalAlignment: Text.AlignVCenter;
-					font.pixelSize: 14;
+					font.pixelSize: constants.pixel_medium;
 					color: root.inverted ? "white" : "black";
 					elide: Text.ElideRight;
 					text: (progress.value * 100).toFixed(2) + "%";
-
-					font.family: "Nokia Pure Text";
 				}
 				Text {
 					id: totallabel;
@@ -60,12 +58,10 @@ Item{
 					height: parent.height;
 					horizontalAlignment: Text.AlignRight;
 					verticalAlignment: Text.AlignVCenter;
-					font.pixelSize: 14;
+					font.pixelSize: constants.pixel_medium;
 					color: root.inverted ? "white" : "black";
 					elide: Text.ElideRight;
 					text: "100%";
-
-					font.family: "Nokia Pure Text";
 				}
 			}
 			ProgressBar{

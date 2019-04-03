@@ -66,8 +66,6 @@ Item{
 		font.weight:Font.Light;
 		text:qsTr("Nothing open yet");
 		visible:maingrid.model && maingrid.count <= 0;
-
-		font.family: "Nokia Pure Text";
 	}
 	MouseArea{
 		anchors.fill:parent;

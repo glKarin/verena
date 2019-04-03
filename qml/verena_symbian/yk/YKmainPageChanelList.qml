@@ -104,7 +104,7 @@ Rectangle {
                     anchors.left: parent.left; anchors.leftMargin: 9
                     anchors.horizontalCenter: parent.horizontalCenter
                     text: title
-                    font.pixelSize: 22
+                    font.pixelSize: 22 - constants.__pixel_DIFF
                     color: "white"
                 }
 
@@ -221,7 +221,7 @@ Rectangle {
                                 y: parent.height  *3 / 16
                                 text: stripe_top
                                 color: "white"
-                                font.pixelSize: 15
+                                font.pixelSize: 15 - constants.__pixel_DIFF
                                 font.bold: true
                                 rotation: 315
                             }
@@ -261,7 +261,7 @@ Rectangle {
                             id: tx_title
                             text: title
                             elide: Text.ElideRight
-                            font.pixelSize: 22
+                            font.pixelSize: 22 - constants.__pixel_DIFF
                             width: contentImg.width
                             height: 22
                             color: "white"
@@ -271,7 +271,7 @@ Rectangle {
                             id: tx_time
                             text:duration
                             elide: Text.ElideRight
-                            font.pixelSize: 17
+                            font.pixelSize: 17 - constants.__pixel_DIFF
                             color: "white"
                             width: contentImg.width
                             height: 17

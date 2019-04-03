@@ -47,7 +47,7 @@ Item{
 					height: parent.height;
 					horizontalAlignment: Text.AlignLeft;
 					verticalAlignment: Text.AlignVCenter;
-					font.pixelSize: 18;
+					font.pixelSize: constants.pixel_medium;
 					color: root.inverted ? "white" : "black";
 					elide: Text.ElideRight;
 					text: (progress.value * 100).toFixed(2) + "%";
@@ -58,7 +58,7 @@ Item{
 					height: parent.height;
 					horizontalAlignment: Text.AlignRight;
 					verticalAlignment: Text.AlignVCenter;
-					font.pixelSize: 18;
+					font.pixelSize: constants.pixel_medium;
 					color: root.inverted ? "white" : "black";
 					elide: Text.ElideRight;
 					text: "100%";

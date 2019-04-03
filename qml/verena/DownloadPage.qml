@@ -273,8 +273,8 @@ VerenaPage{
 				model:ListModel{id:logmodel}
 				Text{
 					width:root.width;
-					height:20;
-					font.pixelSize:20;
+					height: 20;
+					font.pixelSize: constants.pixel_large;
 					color:"white";
 					text:model.value;
 				}
@@ -381,7 +381,7 @@ VerenaPage{
 						height:40;
 						anchors.fill:parent;
 						color:qobj.setColor(modelData.state);
-						font.pixelSize:16;
+						font.pixelSize: constants.pixel_small;
 						elide:Text.ElideRight;
 						text:modelData.name;
 						maximumLineCount:2;
@@ -399,7 +399,7 @@ VerenaPage{
 						z:1;
 						opacity:0.6;
 						color:qobj.setColor(modelData.state);
-						font.pixelSize:30;
+						font.pixelSize: constants.pixel_xxl;
 						text:modelData.percent + "%";
 					}
 					Text{
@@ -407,8 +407,8 @@ VerenaPage{
 						anchors.horizontalCenter:parent.horizontalCenter;
 						anchors.bottom:parent.bottom;
 						color:qobj.setColor(modelData.state);
-						font.pixelSize:24;
-						text:modelData.read + "/" + modelData.total;
+						font.pixelSize: constants.pixel_xl;
+						text: vut.FormatSize(modelData.read) + "/" + vut.FormatSize(modelData.total);
 					}
 				}
 			}
@@ -541,7 +541,7 @@ VerenaPage{
 							width:parent.width;
 							height:parent.height / 3 * 2;
 							color:qobj.setColor(modelData.state);
-							font.pixelSize:24;
+							font.pixelSize: constants.pixel_xl;
 							elide:Text.ElideRight;
 							text:modelData.name;
 							maximumLineCount:2;
@@ -551,8 +551,8 @@ VerenaPage{
 							height:parent.height / 3;
 							anchors.horizontalCenter:parent.horizontalCenter;
 							color:qobj.setColor(modelData.state);
-							font.pixelSize:24;
-							text:qsTr("Size") + ": " + modelData.total;
+							font.pixelSize: constants.pixel_xl;
+							text:qsTr("Size") + ": " + vut.FormatSize(modelData.total);
 						}
 					}
 					Image{
@@ -641,7 +641,7 @@ VerenaPage{
 						height:40;
 						anchors.fill:parent;
 						color:qobj.setColor(modelData.state);
-						font.pixelSize:16;
+						font.pixelSize: constants.pixel_small;
 						elide:Text.ElideRight;
 						text:modelData.name;
 						maximumLineCount:2;
@@ -659,7 +659,7 @@ VerenaPage{
 						z:1;
 						opacity:0.6;
 						color:qobj.setColor(modelData.state);
-						font.pixelSize:30;
+						font.pixelSize: constants.pixel_xxl;
 						text:modelData.percent + "%";
 					}
 					Text{
@@ -667,8 +667,8 @@ VerenaPage{
 						anchors.horizontalCenter:parent.horizontalCenter;
 						anchors.bottom:parent.bottom;
 						color:qobj.setColor(modelData.state);
-						font.pixelSize:24;
-						text:modelData.read + "/" + modelData.total;
+						font.pixelSize: constants.pixel_xl;
+						text: vut.FormatSize(modelData.read) + "/" + vut.FormatSize(modelData.total);
 					}
 					Image{
 						height:40;

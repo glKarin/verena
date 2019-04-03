@@ -49,7 +49,7 @@ Item {
 	VButton{
 		id:tool;
 		anchors.centerIn:parent;
-		iconSource: "toolbar-refresh";
+		iconSource_2: "image://theme/icon-m-toolbar-refresh";
 		platformStyle: VButtonStyle {
 			buttonWidth: buttonHeight; 
 		}

@@ -123,7 +123,7 @@ VerenaPage{
 		platformStyle: VButtonStyle {
 			buttonWidth: buttonHeight; 
 		}
-		iconSource: "toolbar-search";
+		iconSource_2: "image://theme/icon-m-toolbar-search";
 		anchors.right:parent.right;
 		anchors.verticalCenter: tumbler.verticalCenter;
 		//k anchors.rightMargin:5;
@@ -201,7 +201,7 @@ VerenaPage{
 			platformStyle: VButtonStyle {
 				buttonWidth: buttonHeight; 
 			}
-			iconSource: "toolbar-previous";
+			iconSource_2: "image://theme/icon-m-toolbar-previous";
 			enabled:qobj.categoryPage > 1;
 			onClicked:{
 				qobj.match("prev");
@@ -211,7 +211,7 @@ VerenaPage{
 			platformStyle: VButtonStyle {
 				buttonWidth: buttonHeight; 
 			}
-			iconSource: "toolbar-next";
+			iconSource_2: "image://theme/icon-m-toolbar-next";
 			enabled:qobj.categoryPage < qobj.categoryMaxPage;
 			onClicked:{
 				qobj.match("next");
@@ -225,11 +225,9 @@ VerenaPage{
 						maximumLineCount: 2;
 						wrapMode: Text.WordWrap;
             elide:Text.ElideRight;
-            font.pixelSize:16;
+            font.pixelSize: constants.pixel_large;
             text:qobj.categoryPage + "/" + qobj.categoryMaxPage;
-
 						color: "white";
-						font.family: "Nokia Pure Text";
         }
 
 	}

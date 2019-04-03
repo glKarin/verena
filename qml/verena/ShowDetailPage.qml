@@ -111,7 +111,7 @@ VerenaPage{
 		z:1;
 		Text{
 			id:name;
-			font.pixelSize:24;
+			font.pixelSize: constants.pixel_xl;
 			color:"blue";
 			anchors.centerIn:parent;
 			elide:Text.ElideRight;

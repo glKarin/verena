@@ -122,7 +122,7 @@ VerenaPage{
 								width:parent.width;
 								height:parent.height / 4 * 3;
 								color:"black";
-								font.pixelSize:22;
+								font.pixelSize: constants.pixel_large;
 								maximumLineCount:3;
 								elide:Text.ElideRight;
 								text:model.name;
@@ -144,7 +144,7 @@ VerenaPage{
 										anchors.verticalCenter:parent.verticalCenter;
 										width:parent.width - parent.height;
 										clip:true;
-										font.pixelSize:20;
+										font.pixelSize: constants.pixel_medium;
 										text:model.collect_time;
 									}
 								}
@@ -160,7 +160,7 @@ VerenaPage{
 									Text{
 										anchors.verticalCenter:parent.verticalCenter;
 										width:parent.width - parent.height;
-										font.pixelSize:20;
+										font.pixelSize: constants.pixel_medium;
 										clip:true;
 										text:model.rank;
 									}
@@ -255,7 +255,7 @@ VerenaPage{
 								width:parent.width;
 								height:parent.height / 2;
 								color:"black";
-								font.pixelSize:24;
+								font.pixelSize: constants.pixel_large;
 								maximumLineCount:2;
 								elide:Text.ElideRight;
 								text:model.name;
@@ -274,7 +274,7 @@ VerenaPage{
 									anchors.verticalCenter:parent.verticalCenter;
 									width:parent.width - parent.height;
 									clip:true;
-									font.pixelSize:24;
+									font.pixelSize: constants.pixel_medium;
 									text:model.collect_time;
 								}
 							}
@@ -290,7 +290,7 @@ VerenaPage{
 								Text{
 									anchors.verticalCenter:parent.verticalCenter;
 									width:parent.width - parent.height;
-									font.pixelSize:24;
+									font.pixelSize: constants.pixel_medium;
 									clip:true;
 									text:model.rank;
 								}
@@ -382,7 +382,7 @@ VerenaPage{
 								width:parent.width;
 								height:parent.height / 2;
 								color:"black";
-								font.pixelSize:24;
+								font.pixelSize: constants.pixel_large;
 								maximumLineCount:2;
 								elide:Text.ElideRight;
 								text:model.name;
@@ -401,7 +401,7 @@ VerenaPage{
 									anchors.verticalCenter:parent.verticalCenter;
 									width:parent.width - parent.height;
 									clip:true;
-									font.pixelSize:24;
+									font.pixelSize: constants.pixel_medium;
 									text:model.collect_time;
 								}
 							}
@@ -417,7 +417,7 @@ VerenaPage{
 								Text{
 									anchors.verticalCenter:parent.verticalCenter;
 									width:parent.width - parent.height;
-									font.pixelSize:24;
+									font.pixelSize: constants.pixel_medium;
 									clip:true;
 									text:model.rank;
 								}
@@ -510,7 +510,7 @@ VerenaPage{
 								width:parent.width;
 								height:parent.height / 4;
 								color:"black";
-								font.pixelSize:22;
+								font.pixelSize: constants.pixel_xl;
 								elide:Text.ElideRight;
 								text: "<b>" + qsTr("User") + ": </b>" + model.name;
 							}
@@ -518,7 +518,7 @@ VerenaPage{
 								width:parent.width;
 								height:parent.height / 4;
 								color:"black";
-								font.pixelSize:24;
+								font.pixelSize: constants.pixel_large;
 								elide:Text.ElideRight;
 								text:"<b>ID: </b>" + model.vid;
 							}
@@ -535,7 +535,7 @@ VerenaPage{
 									anchors.verticalCenter:parent.verticalCenter;
 									width:parent.width - parent.height;
 									clip:true;
-									font.pixelSize:24;
+									font.pixelSize: constants.pixel_medium;
 									text:model.collect_time;
 								}
 							}
@@ -551,7 +551,7 @@ VerenaPage{
 								Text{
 									anchors.verticalCenter:parent.verticalCenter;
 									width:parent.width - parent.height;
-									font.pixelSize:24;
+									font.pixelSize: constants.pixel_medium;
 									clip:true;
 									text:model.rank;
 								}

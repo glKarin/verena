@@ -126,7 +126,7 @@ tools:ToolBarLayout{
         platformStyle: VButtonStyle {
             buttonWidth: buttonHeight;
         }
-        iconSource: "toolbar-previous";
+				iconSource_2: "image://theme/icon-m-toolbar-previous";
         enabled:qobj.page > 1;
         onClicked:{
             qobj.search("prev");
@@ -136,7 +136,7 @@ tools:ToolBarLayout{
         platformStyle: VButtonStyle {
             buttonWidth: buttonHeight;
         }
-        iconSource: "toolbar-next";
+				iconSource_2: "image://theme/icon-m-toolbar-next";
         enabled:qobj.page < qobj.maxPage;
         onClicked:{
             qobj.search("next");
@@ -150,11 +150,9 @@ tools:ToolBarLayout{
 				maximumLineCount: 2;
 				wrapMode: Text.WordWrap;
 				elide:Text.ElideRight;
-        font.pixelSize:16;
+        font.pixelSize: constants.pixel_large;
         text:qobj.page + "/" + qobj.maxPage;
-
 				color: "white";
-				font.family: "Nokia Pure Text";
     }
 }
 Component.onCompleted:{

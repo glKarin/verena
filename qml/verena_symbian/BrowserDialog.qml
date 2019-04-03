@@ -31,17 +31,15 @@ VerenaDialog {
 				height:90;
 				Text{
 					anchors.verticalCenter:parent.verticalCenter;
-					font.pixelSize:20;
+					font.pixelSize: constants.pixel_xl;
 					color:"white";
 					text:root.url;
 					clip:true;
 					width:parent.width - open.width;
-
-					font.family: "Nokia Pure Text";
 				}
 				ToolIcon{
 					id:open;
-					iconId:"toolbar-search";
+					iconId:"toolbar-application-white";
 					anchors.verticalCenter:parent.verticalCenter;
 					onClicked:{
 						root.close();
@@ -81,7 +79,7 @@ VerenaDialog {
 						ToolIcon{
 							id:play;
 							anchors.verticalCenter:parent.verticalCenter;
-							iconId:"toolbar-mediacontrol-play";
+							iconId:"toolbar-mediacontrol-play-white";
 							onClicked:{
 								root.close();
 								root.request("play", model.source, model.vid);
@@ -92,7 +90,7 @@ VerenaDialog {
 							anchors.verticalCenter:parent.verticalCenter;
 							//visible:false; //to do
 							//iconId:"toolbar-directory-move-to-white";
-							iconId:"toolbar-share";
+							iconId:"toolbar-trim-white";
 							onClicked:{
 								root.close();
 								//root.request("download", model.source, model.vid);

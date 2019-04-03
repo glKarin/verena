@@ -5,6 +5,7 @@
 #include <QMutex>
 #include <QNetworkCookieJar>
 #include <QDeclarativeNetworkAccessManagerFactory>
+#include <QMap>
 
 class QString;
 class QUrl;
@@ -13,6 +14,14 @@ class QNetworkRequest;
 
 #define K_SIZE 1024
 #define M_SIZE 1048576
+
+namespace Verena
+{
+	typedef QMap<QByteArray, QByteArray> VNetworkHeaders_t;
+	bool SpecialRequest(QNetworkRequest *req, const VNetworkHeaders_t &headers = VNetworkHeaders_t());
+	VNetworkHeaders_t YoukuSpecialHeaders();
+	QString RandIP(quint8 min = 50, quint8 max = 250);
+}
 
 class VNetworkCookieJar : public QNetworkCookieJar
 {

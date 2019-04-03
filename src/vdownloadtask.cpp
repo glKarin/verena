@@ -6,39 +6,51 @@
 #include <QFileInfo>
 
 #include "vdownloadtask.h"
+#include "vnetworkmanager.h"
+#include "vdownloadmanager.h"
 #include "vstd.h"
 
-#define V_ZERO_BYTE "0B"
+#define V_ZERO_BYTE 0
+#define V_UNKNOW_SIZE -1
 
-VDownloadTask::VDownloadTask(QObject *parent)
+#ifdef VDEBUG
+#define VDEBUG_D
+#endif
+
+VDownloadTask::VDownloadTask(VDownloadManager *m, QObject *parent)
 	:QObject(parent),
+	file(new QFile),
 	reply(0),
-	cpp_state(VDownloadTask::Ready)
+	cpp_state(VDownloadTask::Ready),
+	oManager(0)
 {
-	file = new QFile;
+	SetDownloadManager(m);
 	init();
 }
 
 VDownloadTask::~VDownloadTask()
 {
-	if(file -> isOpen())
+	if(file)
 	{
-		file -> flush();
-		file -> close();
+		if(file->isOpen())
+		{
+			file->flush();
+			file->close();
+		}
+		delete file;
 	}
-	delete file;
 }
 
 void VDownloadTask::init()
 {
 	if(!file -> fileName().isEmpty() && file -> exists())
 	{
-		iread = file -> size();
-		setRead(Verena::castSize(iread));
-		setTotal(Verena::castSize(itotal));
-		if(itotal != 0)
+		SetStartBytes(file->size());
+		setRead(cpp_read);
+		setTotal(cpp_total);
+		if(cpp_total != 0)
 		{
-			setPercent(iread * 100 / itotal);
+			setPercent(cpp_read * 100 / cpp_total);
 		}
 		else
 		{
@@ -47,14 +59,13 @@ void VDownloadTask::init()
 	}
 	else
 	{
-		setRead(V_ZERO_BYTE);
-		setTotal(V_ZERO_BYTE);
+		setRead(0);
+		setTotal(0);
 		setPercent(0);
-		iread = Q_INT64_C(0);
-		itotal = Q_INT64_C(0);
+		SetStartBytes(0);
 	}
-	m_currentReading = 0;
-	m_currentTotal = 0;
+	iCurrentReading = 0;
+	iCurrentTotal = 0;
 	if(reply)
 	{
 		setState(VDownloadTask::Doing);
@@ -68,11 +79,11 @@ void VDownloadTask::init()
 void VDownloadTask::doFinished()
 {
 #ifdef VDEBUG
-		qDebug() << QString("[%1]: %2 - [%3]").arg(__func__).arg(reply->error()).arg(reply->errorString());
+		qDebug() << QString("[%1]: %2 - [%3] -> 0x%4 0x%5").arg(__func__).arg(reply ? reply->error() : -1).arg(reply ? reply->errorString() : "").arg(reply ? reinterpret_cast<intptr_t>(reply->thread()) : 0, 0, 16).arg(reinterpret_cast<intptr_t>(thread()), 0, 16);
 #endif
 	if(cpp_state == VDownloadTask::Doing)
 	{
-    if(reply->error() != QNetworkReply::NoError || m_currentTotal == 0)
+    if(!reply || reply->error() != QNetworkReply::NoError || iCurrentTotal == 0)
 		{
 			if(RedirectUrl() != 0)
 				endWork(VDownloadTask::Fail);
@@ -161,7 +172,8 @@ void VDownloadTask::endWork(VDownloadTask::State state)
 #ifdef VDEBUG
 	qDebug() << "[DEBUG]: Save end -> " << int(state) << ": " <<file->fileName();
 #endif
-	reply->deleteLater();
+	if(reply)
+		reply->deleteLater();
 	file->flush();
 	file->close();
 	reply = 0;
@@ -169,25 +181,23 @@ void VDownloadTask::endWork(VDownloadTask::State state)
 	{
 		if(state == VDownloadTask::Fail)
 		{
-			m_currentReading = 0;
-			m_currentTotal = 0;
-			setIRead(0);
-			setITotal(0);
+			iCurrentReading = 0;
+			iCurrentTotal = 0;
+			setRead(0);
+			setTotal(0);
 			setPercent(0);
-			setRead(V_ZERO_BYTE);
-			setTotal(V_ZERO_BYTE);
+			SetStartBytes(0);
 			file->remove();
 		}
 		else
-			iread = file->size();
+			SetStartBytes(file->size());
 	}
 	else
 	{
-		setIRead(0); // iread = 0;
-		setITotal(0);
+		SetStartBytes(0); // iStartBytes = 0;
+		setRead(0);
+		setTotal(0);
 		setPercent(0);
-		setRead(V_ZERO_BYTE);
-		setTotal(V_ZERO_BYTE);
 	}
 	emit taskStateChanged(cpp_taskId);
 }
@@ -214,7 +224,7 @@ void VDownloadTask::abort()
 void VDownloadTask::writeData()
 {
 #ifdef VDEBUG_D
-		qDebug() << QString("[%1]: ").arg(__func__);
+		qDebug() << QString("[%1]: 0x%2 0x%3").arg(__func__).arg(reinterpret_cast<intptr_t>(reply->thread()), 0, 16).arg(reinterpret_cast<intptr_t>(thread()), 0, 16);
 #endif
 	if(reply -> error() != QNetworkReply::NoError)
 	{
@@ -239,7 +249,7 @@ void VDownloadTask::writeData()
 void VDownloadTask::updateProgress(qint64 read, qint64 total) // current reading and total bytes
 {
 #ifdef VDEBUG_D
-		qDebug() << QString("[%1]: %2 - %3").arg(__func__).arg(read).arg(total);
+		qDebug() << QString("[%1]: %2 - %3 %4 -> 0x%5 0x%6").arg(__func__).arg(read).arg(total).arg(iStartBytes).arg(reinterpret_cast<intptr_t>(reply->thread()), 0, 16).arg(reinterpret_cast<intptr_t>(thread()), 0, 16);
 #endif
 	if(read == 0 && total == 0)
 	{
@@ -251,43 +261,41 @@ void VDownloadTask::updateProgress(qint64 read, qint64 total) // current reading
 
 	if(total > 0)
 	{
-		if(itotal == 0) // first download
+		if(cpp_total == 0) // first download
 		{
-			itotal = total;
-			setTotal(Verena::castSize(itotal));
-			m_currentTotal = total;
+			setTotal(total);
+			iCurrentTotal = total;
 		}
 		else // breakpoint
 		{
-			if(m_currentTotal != total)
+			if(iCurrentTotal != total)
 			{
-				m_currentTotal = total;
-				setTotal(Verena::castSize(itotal));
+				iCurrentTotal = total;
+				//k setTotal(Verena::castSize(itotal));
 			}
 		}
 	}
 	else if(total == -1)
 	{
-		if(itotal != -1 || m_currentTotal != -1)
+		if(cpp_total != -1 || iCurrentTotal != -1)
 		{
-			m_currentTotal = total;
-			itotal = total;
-			setTotal(tr("Unknow Size"));
-			setPercent(itotal);
+			iCurrentTotal = total;
+			setTotal(V_UNKNOW_SIZE);
+			UpdatePercent(); //k setPercent(V_UNKNOW_SIZE);
 		}
 	}
 
 	if(read > 0)
 	{
-		m_currentReading = read;
-		qint64 cread = iread + m_currentReading;
-		setRead(Verena::castSize(cread));
-		if(itotal != 0)
-			setPercent(cread * 100 / itotal);
+		iCurrentReading = read;
+		qint64 cread = iStartBytes + iCurrentReading;
+		setRead(cread);
+		//k if(cpp_total != 0)
+			UpdatePercent();
 	}
 }
 
-void VDownloadTask::setTotal(const QString &total)
+void VDownloadTask::setTotal(const qint64 &total)
 {
 	if(cpp_total != total)
 	{
@@ -371,7 +379,7 @@ QString VDownloadTask::path() const
 	return cpp_path;
 }
 
-QString VDownloadTask::total() const
+qint64 VDownloadTask::total() const
 {
 	return cpp_total;
 }
@@ -490,7 +498,7 @@ bool VDownloadTask::continueSave()
 	}
 	else
 	{
-		iread = file -> size();
+		SetStartBytes(file->size());
 		setState(VDownloadTask::Ready);
 #ifdef VDEBUG
 		qDebug() << "[INFO]: Ready write data -> " << file->fileName();
@@ -513,45 +521,22 @@ QString VDownloadTask::url() const
 	return cpp_url;
 }
 
-qint64 VDownloadTask::byteOfRead() const
-{
-	return iread;
-}
-
-qint64 VDownloadTask::byteOfTotal() const
-{
-	return itotal;
-}
-
-void VDownloadTask::setIRead(qint64 i)
-{
-	iread = i;
-}
-
-void VDownloadTask::setITotal(qint64 i)
-{
-	itotal = i;
-}
-
 void VDownloadTask::load()
 {
 	file -> setFileName(cpp_path);
-	setTotal(Verena::castSize(itotal));
+	//k setTotal(Verena::castSize(itotal));
 	if(file -> exists())
 	{
-		iread = file -> size();
-		setRead(Verena::castSize(iread));
+		SetStartBytes(file->size());
+		setRead(iStartBytes);
 	}
 	else
 	{
-		iread = 0;
-		setRead(V_ZERO_BYTE);
+		SetStartBytes(0);
+		setRead(0);
 		setState(VDownloadTask::Fail);
 	}
-	if(itotal != 0)
-		setPercent(iread * 100 / itotal);
-	else
-		setPercent(0);
+	UpdatePercent();
 }
 
 QString VDownloadTask::source() const
@@ -583,16 +568,15 @@ void VDownloadTask::errorSLOT(QNetworkReply::NetworkError code)
 
 void VDownloadTask::Zero()
 {
-	setITotal(0);
+	setTotal(0);
 }
 
 int VDownloadTask::RedirectUrl()
 {
 	int r;
-	QNetworkAccessManager *manager;
 
 	if(!reply)
-		return false;
+		return -2;
 
 	r = 0;
 	int statusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
@@ -634,15 +618,12 @@ int VDownloadTask::RedirectUrl()
 		QUrl redirectUrl = reply->attribute(QNetworkRequest::RedirectionTargetAttribute).toUrl();
 		if(!redirectUrl.toString().isEmpty())
 		{
-			manager = reply->manager();
 			reply->deleteLater();
 			reply = 0;
 #ifdef VDEBUG
 			qDebug() << "[DEBUG]: Redirection -> "<< file -> fileName() << redirectUrl;
 #endif
-			QNetworkRequest req(redirectUrl);
-			reply = manager->get(req);
-			init();
+			Request(redirectUrl.toString()); // not setUrl
 			r = 0;
 		}
 		else
@@ -656,10 +637,83 @@ int VDownloadTask::RedirectUrl()
 
 qint64 VDownloadTask::CurrentReadingBytes() const
 {
-	return m_currentReading;
+	return iCurrentReading;
 }
 
 qint64 VDownloadTask::CurrentTotalBytes() const
 {
-	return m_currentTotal;
+	return iCurrentTotal;
+}
+
+void VDownloadTask::UpdatePercent()
+{
+	if(cpp_total > 0)
+		setPercent(cpp_read * 100 / cpp_total);
+	else
+		setPercent(cpp_total);
+}
+
+void VDownloadTask::SetStartBytes(qint64 i)
+{
+	if(iStartBytes != i)
+	{
+		iStartBytes = i;
+	}
+}
+
+qint64 VDownloadTask::StartBytes() const
+{
+	return iStartBytes;
+}
+
+QNetworkReply * VDownloadTask::SetRequest(const QString &u)
+{
+	if(!u.isEmpty())
+		setUrl(u);
+
+	return Request(url());
+}
+
+QNetworkReply * VDownloadTask::Request(const QString &ru)
+{
+	QString u;
+	QNetworkReply *r;
+	QNetworkAccessManager *m;
+	qint64 last;
+	
+	u = ru.isEmpty() ? url() : ru;
+
+	if(!oManager || u.isEmpty())
+		return 0;
+
+	m = oManager->NetworkManager();
+	QNetworkRequest req(u);
+
+	Verena::SpecialRequest(&req, Verena::YoukuSpecialHeaders());
+	last = castCurrentFileSize();
+	if(last != 0)
+		req.setRawHeader(QByteArray("Range"), QString("bytes=%1-").arg(last).toAscii());
+	r = m->get(req);
+#ifdef VDEBUG
+	qDebug()<<"A: "<<thread()<<m->thread()<<oManager->thread()<<m->parent()<<r->thread();
+#endif
+	r->setParent(0);
+	r->moveToThread(thread());
+	setReply(r);
+#ifdef VDEBUG
+	qDebug()<<"A2: "<<thread()<<m->thread()<<oManager->thread()<<m->parent()<<r->thread();
+#endif
+	return r;
+}
+
+void VDownloadTask::SetDownloadManager(VDownloadManager *m)
+{
+	QThread *thread;
+	oManager = m;
+	if(oManager)
+	{
+		thread = oManager->DownloadThread();
+		if(thread)
+			moveToThread(thread);
+	}
 }

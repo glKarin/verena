@@ -10,6 +10,7 @@
 #include <QByteArray>
 #include <QMutexLocker>
 #include <QMutex>
+#include <QThread>
 
 #include "vdownloadmanager.h"
 #include "vnetworkmanager.h"
@@ -39,15 +40,16 @@ inline QString GetVideoUrl(const QString &url)
 }
 
 	VDownloadManager::VDownloadManager(QObject *parent)
-:QObject(parent)
-{
-	manager = new VNetworkAccessManager(this);
-	vdb = new VVerenaDatabase(DBNAME
+:QObject(parent),
+	manager(0),
+	vdb(new VVerenaDatabase(DBNAME
 #ifdef _HARMATTAN
 			, USERNAME, PASSWORD
 #endif
-			);
-	mutex = new QMutex(QMutex::Recursive);
+			)),
+			mutex(new QMutex(QMutex::Recursive)),
+			oThread(0)
+{
 	vdb -> openDatabase();
 	QStringList list;
 	list<<QString(TASKID) + " TEXT UNIQUE NOT NULL"
@@ -77,7 +79,7 @@ void VDownloadManager::storeToDatabase(const VDownloadTask *task)
 		<<QVariant(task -> path())
 		<<QVariant(task -> title())
 		<<QVariant(task -> url())
-		<<QVariant(task -> byteOfTotal());
+		<<QVariant(task->total());
 	vdb -> addElementToTable(DATABASE_TABLE_NAME_1, list);
 }
 
@@ -93,18 +95,10 @@ void VDownloadManager::addTask(const QString &url, const QString &source, const 
 		if(task -> state() == VDownloadTask::Pause)
 		{
 			if(task -> continueSave()){
-				QNetworkRequest req;
-				req.setUrl(QUrl(task -> url()));
-				qint64 last = task -> castCurrentFileSize();
-				if(last != 0)
-				{
-					req.setRawHeader(QByteArray("Range"), QString("bytes=%1-").arg(last).toAscii());
-				}
+				/* QNetworkReply *reply =*/ task->Request();
 #ifdef VDEBUG
-				qDebug() << "[INFO]: Ready to redownload -> " << last;
+				qDebug() << "[INFO]: Ready to redownload -> " << task->StartBytes();
 #endif
-				QNetworkReply *reply = manager -> get(req);
-				task -> setReply(reply);
 				connect(task, SIGNAL(taskStateChanged(const QString &)), this, SLOT(doFinished(const QString &)));
 				connect(task, SIGNAL(errorChanged(const QString &, const QString &)), this, SLOT(fileSaverErrorNotify(const QString &, const QString &)));
 				taskList[VDownloadManager::Downloading].push_back(dynamic_cast<QObject *>(task));
@@ -129,7 +123,7 @@ void VDownloadManager::addTask(const QString &url, const QString &source, const 
 		}
 	}
 	//qDebug()<<s;
-	VDownloadTask *task2 = new VDownloadTask;
+	VDownloadTask *task2 = new VDownloadTask(this);
 	task2 -> setVid(vid);
 	task2 -> setStreamtype(type);
 	task2 -> setSource(source);
@@ -142,8 +136,9 @@ void VDownloadManager::addTask(const QString &url, const QString &source, const 
 
 	if(task2 -> readySave())
 	{
-		QNetworkReply *reply = manager -> postRequest(GetVideoUrl(url));
-		task2 -> setReply(reply);
+		/* QNetworkReply *reply =*/ task2->Request();
+		//qDebug()<<manager<<reply->parent()<<reply->manager();
+		//qDebug()<<thread()<<reply->thread()<<task2->thread();
 		connect(task2, SIGNAL(taskStateChanged(const QString &)), this, SLOT(doFinished(const QString &)));
 		connect(task2, SIGNAL(errorChanged(const QString &, const QString &)), this, SLOT(fileSaverErrorNotify(const QString &, const QString &)));
 		taskList[VDownloadManager::Downloading].push_back(dynamic_cast<QObject *>(task2));
@@ -291,7 +286,7 @@ void VDownloadManager::loadHistory()
 			++itor)
 	{
 		QMap<QString, QVariant> map = itor -> toMap();
-		VDownloadTask *task = new VDownloadTask;
+		VDownloadTask *task = new VDownloadTask(this);
 		QString s = map[TASKID].toString();
 		QStringList sl = s.split("_", QString::SkipEmptyParts);
 		task -> setTaskId(s);
@@ -306,7 +301,7 @@ void VDownloadManager::loadHistory()
 		task->setExtName(Verena::GetVideoUrlSuffix(task->url()));
 
 		task -> setTitle(map[NAME].toString());
-		task -> setITotal(map[SIZE].toLongLong());
+		task->setTotal(map[SIZE].toLongLong());
 		task -> setState(static_cast<VDownloadTask::State>(map[STATE].toInt()));
 		if(map[STATE].toInt() == VDownloadTask::Done)
 		{
@@ -382,8 +377,7 @@ void VDownloadManager::reloadTask(const QString &url, const QString &taskId)
 	task -> setState(VDownloadTask::Ready);
 	if(task -> readySave())
 	{
-		QNetworkReply *reply = manager -> postRequest(url);
-		task -> setReply(reply);
+		/* QNetworkReply *reply =*/ task->Request();
 		connect(task, SIGNAL(taskStateChanged(const QString &)), this, SLOT(doFinished(const QString &)));
 		connect(task, SIGNAL(errorChanged(const QString &, const QString &)), this, SLOT(fileSaverErrorNotify(const QString &, const QString &)));
 		taskList[VDownloadManager::Downloading].push_back(dynamic_cast<QObject *>(task));
@@ -439,15 +433,7 @@ void VDownloadManager::continueTask(const QString &taskId)
 	{
 		if(task -> continueSave())
 		{
-			QNetworkRequest req;
-			req.setUrl(QUrl(task -> url()));
-			qint64 last = task -> castCurrentFileSize();
-			if(last != 0)
-			{
-				req.setRawHeader(QByteArray("Range"), QString("bytes=%1-").arg(last).toAscii());
-			}
-			QNetworkReply *reply = manager -> get(req);
-			task -> setReply(reply);
+			/* QNetworkReply *reply =*/ task->Request();
 			connect(task, SIGNAL(taskStateChanged(const QString &)), this, SLOT(doFinished(const QString &)));
 			connect(task, SIGNAL(errorChanged(const QString &, const QString &)), this, SLOT(fileSaverErrorNotify(const QString &, const QString &)));
 			emit fileDownloadRestarted(task -> name());
@@ -464,8 +450,30 @@ void VDownloadManager::continueTask(const QString &taskId)
 	}
 }
 
+QNetworkAccessManager * VDownloadManager::NetworkManager()
+{
+	if(!manager)
+		manager = new VNetworkAccessManager(this);
+	return manager;
+}
+
+QThread * VDownloadManager::DownloadThread()
+{
+	if(!oThread)
+	{
+		oThread = new QThread;
+		oThread->start(QThread::IdlePriority);
+		connect(this, SIGNAL(destroyed()), oThread, SLOT(quit()));
+		connect(oThread, SIGNAL(finished()), oThread, SLOT(deleteLater()));
+	}
+#ifdef VDEBUG
+	qDebug()<<"P: "<<thread();
+#endif
+	return oThread;
+}
+
 VDownloadManager * VDownloadManager::Instance()
 {
-	static VDownloadManager Manager;
-	return &Manager;
+	static VDownloadManager DlManager;
+	return &DlManager;
 }

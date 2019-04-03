@@ -15,7 +15,7 @@ Item{
 			buttonWidth: buttonHeight; 
 		}
 		visible:root.error;
-		iconSource: "toolbar-refresh";
+		iconSource_2: "image://theme/icon-m-toolbar-refresh";
 		z:5;
 		onClicked:{
 			if(root.error){
@@ -52,11 +52,9 @@ Item{
 							horizontalAlignment: Text.AlignHCenter;
 							verticalAlignment: Text.AlignVCenter;
 							color:"white";
-							font.pixelSize:10;
+							font.pixelSize: constants.pixel_tiny;
 							elide:Text.ElideRight;
 							text:model.title;
-
-							font.family: "Nokia Pure Text";
 						}
 					}
 					MouseArea{

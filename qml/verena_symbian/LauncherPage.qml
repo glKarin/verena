@@ -251,8 +251,6 @@ Rectangle{
 				color:"white";
 				elide:Text.ElideRight;
 				clip:true;
-
-				font.family: "Nokia Pure Text";
 			}
 		}
 		Rectangle{
@@ -323,8 +321,6 @@ Rectangle{
 							horizontalAlignment: Text.AlignHCenter;
 							clip:true;
 							text:model.name;
-
-							font.family: "Nokia Pure Text";
 						}
 						Rectangle{
 							id:subshadow;

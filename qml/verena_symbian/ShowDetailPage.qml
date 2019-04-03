@@ -111,12 +111,10 @@ VerenaPage{
 		z:1;
 		Text{
 			id:name;
-			font.pixelSize:20;
+			font.pixelSize: constants.pixel_xl;
 			color:"blue";
 			anchors.centerIn:parent;
 			elide:Text.ElideRight;
-
-			font.family: "Nokia Pure Text";
 		}
 	}
 
@@ -183,7 +181,7 @@ VerenaPage{
 		}
 		ToolIcon{
 			enabled:qobj.internalShowId.length !== 0;
-			iconId: qobj.isCollected ? "toolbar-delete" : "toolbar-add";
+			iconId: qobj.isCollected ? "toolbar-favorite-mark" : "toolbar-favorite-unmark";
 			onClicked:{
 				qobj.addOrRemoveCollection();
 			}

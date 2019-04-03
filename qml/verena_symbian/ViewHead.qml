@@ -38,12 +38,10 @@ Rectangle{
 		elide: Text.ElideRight;
 		wrapMode: Text.WrapAnywhere;
 		font.bold: true;
-		font.pixelSize:20;
+		font.pixelSize: constants.pixel_xl;
 		z:3;
 		color:"green";
 		clip:true;
-
-		font.family: "Nokia Pure Text";
 	}
 
 	ToolIcon{

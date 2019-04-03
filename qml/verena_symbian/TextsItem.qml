@@ -9,7 +9,7 @@ Item{
 	clip: true;
 
 	property int horizontalAlignment: Text.AlignLeft;
-	property bool nu: false;
+	property variant nu: false;
 	property alias text: title.text;
 	property variant texts: [];
 	signal clicked(string link);
@@ -39,7 +39,7 @@ Item{
 	Component{
 		id: textitem;
 		Text{
-			font.pixelSize: 14;
+			font.pixelSize: constants.pixel_medium;
 			width: parent.width;
 			color: "white";
 			wrapMode: Text.WordWrap;
@@ -47,8 +47,6 @@ Item{
 			onLinkActivated: {
 				root.clicked(link);
 			}
-
-			font.family: "Nokia Pure Text";
 		}
 	}
 
@@ -74,12 +72,34 @@ Item{
 		{
 			var s = ts[i];
 			var item = textitem.createObject(col);
-			item.text = n ? ("" + (i + 1) + ", " + s.text) : s.text;
+			item.text = __makeText(s.text, n, i);
 			if(s.pixelSize)
 				item.font.pixelSize = s.pixelSize;
 			if(s.color)
 				item.color = s.color;
 			//console.log(s.text);
 		}
+	}
+
+	function __makeText(text, n, i)
+	{
+		var nt = typeof(n);
+		var s;
+		switch(nt)
+		{
+			case "string":
+			s = n + text;
+			break;
+			case "number":
+			s = "" + (n + i) + ", " + text;
+			break;
+			case "function":
+			s = n() + text;
+			break;
+			default:
+			s = n ? ("" + (i + 1) + ", " + text) : text;
+			break;
+		}
+		return s;
 	}
 }

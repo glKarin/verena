@@ -260,7 +260,7 @@ Page{
                 text: (banner.model.get(banner.currentIndex) != undefined ?
                            banner.model.get(banner.currentIndex).title: "" )
                 color: "white"
-                font.pixelSize: 16
+                font.pixelSize: 16 - constants.__pixel_DIFF
             }
 
             // banner index

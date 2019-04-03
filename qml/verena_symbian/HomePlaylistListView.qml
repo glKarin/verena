@@ -33,22 +33,17 @@ Rectangle{
 							horizontalAlignment: Text.AlignHCenter;
 							verticalAlignment: Text.AlignVCenter;
 							color:"black";
-							font.pixelSize:14;
+							font.pixelSize: constants.pixel_medium;
 							elide:Text.ElideRight;
 							text:model.name;
-
-							font.family: "Nokia Pure Text";
 						}
 						Text{
 							width:parent.width;
 							height:parent.height / 8;
 							color:"black";
-							font.pixelSize:14;
+							font.pixelSize: constants.pixel_medium;
 							elide:Text.ElideRight;
 							text:qsTr("Video Count") + ": " + model.video_count;
-
-							font.family: "Nokia Pure Text";
-
 						}
 					}
 					MouseArea{

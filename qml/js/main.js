@@ -300,7 +300,7 @@ function getVideoStreamtypes(videoId, success, fail){
 				ccode: CCODE,
 				client_ip: CLIENT_IP,
 				utid: utid,
-                client_ts: (new Date().getTime() / 1000).toString(),
+				client_ts: (new Date().getTime() / 1000).toString(),
 				ckey: encodeURI(CKEY),
 					//password: pwd,
 			};

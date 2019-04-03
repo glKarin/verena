@@ -34,7 +34,7 @@ Item{
 		height: parent.height;
 		verticalAlignment: Text.AlignVCenter;
 		elide: Text.ElideRight;
-		font.pixelSize:24;
+		font.pixelSize: constants.pixel_xl;
         color:"black";
 	}
 	Rectangle{

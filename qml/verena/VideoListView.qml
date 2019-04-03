@@ -101,7 +101,7 @@ Item{
 							width:parent.width;
 							height:parent.height / 4 * 3;
 							color:"black";
-							font.pixelSize:22;
+							font.pixelSize: constants.pixel_large;
 							maximumLineCount:3;
 							elide:Text.ElideRight;
 							text:model.title;
@@ -133,7 +133,7 @@ Item{
 									width:parent.width - parent.height;
 									color:"black";
 									clip:true;
-									font.pixelSize:20;
+									font.pixelSize: constants.pixel_medium;
 									text:model.published.split(" ")[0];
 								}
 							}
@@ -150,7 +150,7 @@ Item{
 								Text{
 									anchors.verticalCenter:parent.verticalCenter;
 									width:parent.width - parent.height;
-									font.pixelSize:20;
+									font.pixelSize: constants.pixel_medium;
 									clip:true;
 									color:"black";
 									text:model.view_count;

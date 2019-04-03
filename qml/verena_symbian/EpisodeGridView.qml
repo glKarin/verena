@@ -70,11 +70,11 @@ Item{
 					id:title;
 					anchors.top:parent.top;
 					anchors.left:parent.left;
-					height:36;
+					height:40;
 					width:parent.width;
 					horizontalAlignment: Text.AlignHCenter;
 					verticalAlignment: Text.AlignVCenter;
-					font.pixelSize:14;
+					font.pixelSize: constants.pixel_small;
 					elide:Text.ElideRight;
 					wrapMode:Text.WrapAnywhere;
 					maximumLineCount:2;
@@ -87,8 +87,6 @@ Item{
 							view.currentIndex = index;
 						}
 					}
-
-					font.family: "Nokia Pure Text";
 				}
 				Image{
 					id:thumbnail;
@@ -157,7 +155,7 @@ Item{
 							verticalCenterOffset:screen.currentOrientation === Screen.Portrait || screen.currentOrientation === Screen.PortraitInverted ? 0 : height / 2 + (parent.height - 2 * height) / 6;
 							horizontalCenterOffset:screen.currentOrientation === Screen.Portrait || screen.currentOrientation === Screen.PortraitInverted ? width / 2 + (parent.width - 2 * width) / 6 : 0;
 						}
-						iconId:"toolbar-add";
+						iconId:"toolbar-directory-move-to";
 						onClicked:{
 							view.currentIndex = index;
 							var page = Qt.createComponent(Qt.resolvedUrl("DownloadPage.qml"));

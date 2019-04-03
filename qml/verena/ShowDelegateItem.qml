@@ -32,7 +32,7 @@ Rectangle{
 			horizontalAlignment: Text.AlignHCenter;
 			verticalAlignment: Text.AlignVCenter;
 			color:"black";
-			font.pixelSize:20;
+			font.pixelSize: constants.pixel_large;
 			elide:Text.ElideRight;
 			text:model.name;
 			//wrapMode:Text.WrapAnywhere;

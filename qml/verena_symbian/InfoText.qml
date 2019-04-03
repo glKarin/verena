@@ -24,8 +24,7 @@ Rectangle {
 		horizontalAlignment: Text.AlignHCenter;
 		verticalAlignment: Text.AlignVCenter;
 		color:"white";
-		font.pixelSize: 20;
-		font.family: "Nokia Pure Text";
+		font.pixelSize: constants.pixel_large;
 		font.weight: Font.Bold;
 	}
 

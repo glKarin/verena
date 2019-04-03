@@ -25,7 +25,7 @@ Item{
 			id: title;
 			anchors.verticalCenter: parent.verticalCenter;
 			width: 120;
-			font.pixelSize: 24;
+			font.pixelSize: constants.pixel_xl;
 			elide: Text.ElideRight;
 			MouseArea{
 				enabled: root.editable;

@@ -140,12 +140,10 @@ VerenaPage{
 		z:1;
 		Text{
 			id:name;
-			font.pixelSize:20;
+			font.pixelSize: constants.pixel_xl;
 			color:"blue";
 			anchors.centerIn:parent;
 			elide:Text.ElideRight;
-
-			font.family: "Nokia Pure Text";
 		}
 	}
 
@@ -246,11 +244,9 @@ VerenaPage{
 							maximumLineCount:2;
 							wrapMode:Text.WrapAnywhere;
 							elide:Text.ElideRight;
-							font.pixelSize:18;
+							font.pixelSize: constants.pixel_large;
 							font.bold: true;
 							text: qobj.username;
-
-							font.family: "Nokia Pure Text";
 						}
 						Button{
 							width:parent.width;
@@ -295,7 +291,7 @@ VerenaPage{
 		}
 		ToolIcon{
 			enabled:qobj.internalPlaylistId.length !== 0;
-			iconId: qobj.isCollected ? "toolbar-delete" : "toolbar-add";
+			iconId: qobj.isCollected ? "toolbar-favorite-mark" : "toolbar-favorite-unmark";
 			onClicked:{
 				qobj.addOrRemoveCollection();
 			}

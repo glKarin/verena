@@ -33,7 +33,7 @@ Rectangle{
 							horizontalAlignment: Text.AlignHCenter;
 							verticalAlignment: Text.AlignVCenter;
 							color:"black";
-							font.pixelSize:16;
+							font.pixelSize: constants.pixel_small;
 							elide:Text.ElideRight;
 							text:model.title;
 						}

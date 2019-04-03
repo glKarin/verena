@@ -38,7 +38,7 @@ var YoukuParser_new = function(){
 		var req = new NetworkRequest("GET", ETAG_URL);
 		req.sendRequest(function(text, cb, header){
 			var utid = GetCna(text, header);
-            var ts = (new Date().getTime() / 1000).toString();
+			var ts = (new Date().getTime() / 1000).toString();
 			//var url = GETVIDEO_URL_FMT.arg(Youku_HandleVID(videoId)).arg(CCODE).arg(CLIENT_IP).arg(utid).arg(ts).arg(encodeURI(CKEY));
 
 			var opt = {
@@ -94,7 +94,7 @@ var YoukuParser_new = function(){
 	}
 
 	function query(url) {
-		var pattern = /^http:\/\/v.youku.com\/v_show\/id_([0-9a-zA-Z]+)(==|_.*)?\.html/;
+		var pattern = /^https?:\/\/v.youku.com\/v_show\/id_([0-9a-zA-Z]+)(==|_.*)?\.html/;
 		if (!url.match(pattern)) {
 			showStatusText("Invalid url!");
 			return;

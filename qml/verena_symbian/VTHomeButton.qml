@@ -50,12 +50,10 @@ Item{
 			height: parent.height - parent.border.width * 2;
 			horizontalAlignment: Text.AlignHCenter;
 			verticalAlignment: Text.AlignVCenter;
-			font.pixelSize: 16;
+			font.pixelSize: 20 - constants.__pixel_DIFF;
 			elide: Text.ElideRight;
 			color: mousearea.pressed ? pressedTextColor : textColor;
 			font.weight:Font.Bold;
-
-			font.family: "Nokia Pure Text";
 		}
         MouseArea{
             id:mousearea;

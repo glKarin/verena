@@ -74,7 +74,7 @@ Item{
 					width:parent.width;
 					horizontalAlignment: Text.AlignHCenter;
 					verticalAlignment: Text.AlignVCenter;
-					font.pixelSize:16;
+					font.pixelSize: constants.pixel_small;
 					elide:Text.ElideRight;
 					wrapMode:Text.WrapAnywhere;
 					maximumLineCount:2;

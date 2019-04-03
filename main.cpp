@@ -21,6 +21,10 @@
 #include "vdownloadtask.h"
 #include "vut.h"
 
+#ifdef _KARIN_MM_EXTENSIONS
+#include "qdeclarativevideo_p.h"
+#endif
+
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
 	VUT *vut;
@@ -76,6 +80,10 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 	qmlRegisterType<VVideoPlayer>("karin.verena", VERENA_QML_MAJOR_VERSION, VERENA_QML_MINOR_VERSION, "VPlayer");
 	qmlRegisterType<VDownloadTask>("karin.verena", VERENA_QML_MAJOR_VERSION, VERENA_QML_MINOR_VERSION, "VDownloadTask");
 	qmlRegisterUncreatableType<VDownloadManager>("karin.verena", VERENA_QML_MAJOR_VERSION, VERENA_QML_MINOR_VERSION, "VDownloadManager", RegisterUncreatableTypeMsg.arg("VDownloadManager"));
+
+#ifdef _KARIN_MM_EXTENSIONS
+	qmlRegisterType<QDeclarativeVideo>("karin.verena.extensions", VERENA_QML_MAJOR_VERSION, VERENA_QML_MINOR_VERSION, "VVideo");
+#endif
 
 	QmlApplicationViewer viewer;
 #ifdef _HARMATTAN

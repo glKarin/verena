@@ -198,7 +198,7 @@ VerenaPage{
 					width:parent.width;
 					clip:true;
 					color:"black";
-					font.pixelSize:24;
+					font.pixelSize: constants.pixel_xl;
 					elide:Text.ElideRight;
                     text:model.keyword;
 				}
@@ -240,7 +240,7 @@ VerenaPage{
 			verticalAlignment: Text.AlignVCenter;
 			maximumLineCount: 2;
 			elide:Text.ElideRight;
-			font.pixelSize:22;
+			font.pixelSize: constants.pixel_large;
 			text:buttonrow.checkedButton === first ? qsTr("Press and hold item to remove") : "";
 		}
 	}

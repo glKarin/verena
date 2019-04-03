@@ -52,7 +52,7 @@ Item{
 							horizontalAlignment: Text.AlignHCenter;
 							verticalAlignment: Text.AlignVCenter;
 							color:"white";
-							font.pixelSize:14;
+							font.pixelSize: constants.pixel_tiny;
 							elide:Text.ElideRight;
 							text:model.title;
 						}

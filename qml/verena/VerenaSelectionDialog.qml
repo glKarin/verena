@@ -31,7 +31,7 @@ Item{
 					height:parent.height;
 					anchors.verticalCenter:parent.verticalCenter;
 					color:"white";
-					font.pixelSize:28;
+					font.pixelSize: constants.pixel_xl;
 					elide:Text.ElideRight;
 					text:model.value;
 				}

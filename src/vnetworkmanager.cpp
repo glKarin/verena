@@ -84,28 +84,9 @@ QNetworkReply *	VNetworkAccessManager::createRequest ( QNetworkAccessManager::Op
 		}
 #endif
 
-    QString host = request.url().host();
-    if(YoukuSpecialUrl.contains(host))
-    {
-        request.setRawHeader("Referer", ut->GetSetting<QByteArray>(SETTING_YOUKU_REFERER));
-        request.setRawHeader("User-Agent", ut->GetSetting<QByteArray>(SETTING_YOUKU_UA));
-
-#if 0 //k (2016)
-        //QString s("__ysuid=" + QString::number(std::time(0)));
-				QString s(QString("__ysuid=%1%2").arg(QDateTime::currentMSecsSinceEpoch()).arg(100 + qrand() % (999 - 100)));
-				qDebug()<<s;
-        request.setRawHeader("Cookie", s.toAscii());
-#endif
-#if 0
-        request.setAttribute(QNetworkRequest::CookieLoadControlAttribute, QNetworkRequest::Manual);
-				QList<QNetworkCookie> cookie;
-				QVariant var;
-				var.setValue(cookie);
-				request.setHeader(QNetworkRequest::CookieHeader, var);
-#endif
-    }
-    else
+    if(!Verena::SpecialRequest(&request))
      request.setRawHeader("User-Agent", userAgent);
+
 	QNetworkReply *reply = QNetworkAccessManager::createRequest(op, request, outgoingData);
 	return reply;
 }
@@ -209,3 +190,88 @@ bool VNetworkCookieJar::setCookiesFromUrl(const QList<QNetworkCookie> &cookieLis
 	return QNetworkCookieJar::setCookiesFromUrl(cookieList, url);
 }
 
+namespace Verena
+{
+	bool SpecialRequest(QNetworkRequest *req, const VNetworkHeaders_t &headers)
+	{
+		bool r;
+		VUT *ut;
+		QString host;
+
+		r = false;
+
+		if(!req)
+			goto __Exit;
+
+		ut = VUT::Instance();
+		host = req->url().host();
+		if(YoukuSpecialUrl.contains(host))
+		{
+			req->setRawHeader("Referer", ut->GetSetting<QByteArray>(SETTING_YOUKU_REFERER));
+			req->setRawHeader("User-Agent", ut->GetSetting<QByteArray>(SETTING_YOUKU_UA));
+
+#if 0 //k (2016)
+			//QString s("__ysuid=" + QString::number(std::time(0)));
+			QString s(QString("__ysuid=%1%2").arg(QDateTime::currentMSecsSinceEpoch()).arg(100 + qrand() % (999 - 100)));
+			qDebug()<<s;
+			request.setRawHeader("Cookie", s.toAscii());
+#endif
+			r = true;
+			goto __Exit;
+		}
+
+		if(!headers.isEmpty())
+		{
+#ifdef VDEBUG
+			qDebug() << "[DEBUG]: Special url -> " << req->url();
+#endif
+			for(QMap<QByteArray, QByteArray>::const_iterator itor = headers.constBegin();
+					itor != headers.constEnd(); ++itor)
+			{
+				req->setRawHeader(itor.key(), itor.value());
+#ifdef VDEBUG
+				qDebug() << "[DEBUG]: Special header -> " << itor.key() << itor.value();
+#endif
+			}
+			r = true;
+			goto __Exit;
+		}
+
+__Exit:
+		return r;
+	}
+
+	VNetworkHeaders_t YoukuSpecialHeaders()
+	{
+		VNetworkHeaders_t headers;
+		VUT *ut;
+		QByteArray ip;
+
+		ut = VUT::Instance();
+		ip.append(RandIP());
+
+		headers.insert("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"); //                "Accept-Encoding: gzip, deflate, br",
+		headers.insert("Accept-Language", "zh-CN,en-US;q=0.7,en;q=0.3");
+		//headers.insert("Referer", ut->GetSetting<QByteArray>(SETTING_YOUKU_REFERER));
+		headers.insert("User-Agent", 
+				//k ut->GetSetting<QByteArray>(SETTING_YOUKU_UA)
+				"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36"
+				);
+		/*
+		headers.insert("HTTP_X_FORWARDED_FOR", ip);
+		headers.insert("CLIENT-IP", ip);
+		*/
+		headers.insert("X-Forwarded-For", ip);
+		//headers.insert("Client-Ip", ip);
+
+		return headers;
+	}
+
+	QString RandIP(quint8 min, quint8 max)
+	{
+#define _V_R(m, n) (qrand() % (n - m) + m)
+		qsrand(QDateTime::currentMSecsSinceEpoch());
+		return QString("%1.%2.%3.%4").arg(_V_R(min, max)).arg(_V_R(min, max)).arg(_V_R(min, max)).arg(_V_R(min, max));
+#undef _V_R
+	}
+}

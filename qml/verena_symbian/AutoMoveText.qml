@@ -19,9 +19,7 @@ Item{
 		color: "blue";
 		clip: true;
 		text: root.text.substring(index);
-		font.pixelSize: 18;
-
-		font.family: "Nokia Pure Text";
+		font.pixelSize: constants.pixel_medium;
 	}
 	Timer{
 		id: timer;

@@ -59,7 +59,7 @@ VerenaDialog {
 						id:filename;
 						color:parent.ListView.isCurrentItem ? "black" : "white";
 						anchors.verticalCenter:parent.verticalCenter;
-						font.pixelSize:22;
+						font.pixelSize: constants.pixel_large;
 						elide:Text.ElideLeft;
 						text:model.name;
 					}
@@ -132,7 +132,7 @@ VerenaDialog {
 					height:parent.height;
 					spacing:4;
 					Text{
-						font.pixelSize:24;
+						font.pixelSize: constants.pixel_xl;
 						anchors.verticalCenter:parent.verticalCenter;
 						color:qobj.hasEdited ? "red" : "white";
 						text:!code.readOnly ? "Editing" : "Edit" + " -> ";
@@ -191,7 +191,7 @@ VerenaDialog {
 						}
 					}
 					Text{
-						font.pixelSize:24;
+						font.pixelSize: constants.pixel_xl;
 						anchors.verticalCenter:parent.verticalCenter;
 						color:switches2.checked ? "red" : "white";
 						text:switches2.checked ? "enable root" : "disable root" + " -> ";
@@ -201,7 +201,7 @@ VerenaDialog {
 						anchors.verticalCenter:parent.verticalCenter;
 					}
 					Text{
-						font.pixelSize:24;
+						font.pixelSize: constants.pixel_xl;
 						anchors.verticalCenter:parent.verticalCenter;
 						color:"white";
 						text:"Terminal -> ";
@@ -230,7 +230,7 @@ VerenaDialog {
 						}
 					}
 					Text{
-						font.pixelSize:24;
+						font.pixelSize: constants.pixel_xl;
 						anchors.verticalCenter:parent.verticalCenter;
 						color:"white";
 						text:"external editor -> ";

@@ -49,7 +49,7 @@ Item{
 					width: parent.width / 2;
 					horizontalAlignment: Text.AlignLeft;
 					verticalAlignment: Text.AlignVCenter;
-					font.pixelSize: 18;
+					font.pixelSize:  constants.pixel_medium;
 					color: root.inverted ? "white" : "balck";
 					elide: Text.ElideRight;
 					text: root.autoLabel ? slider.minimumValue : root.minText;
@@ -63,7 +63,7 @@ Item{
 					width: parent.width / 2;
 					horizontalAlignment: Text.AlignRight;
 					verticalAlignment: Text.AlignVCenter;
-					font.pixelSize: 18;
+					font.pixelSize:  constants.pixel_medium;
 					color: root.inverted ? "white" : "balck";
 					elide: Text.ElideRight;
 					text: root.autoLabel ? slider.maximumValue : root.maxText;

@@ -385,7 +385,7 @@ VerenaPage{
 		z:1;
 		AutoMoveText{
 			id:name;
-			pixelSize:24;
+			pixelSize: constants.pixel_xl;
 			color:"blue";
 			anchors.verticalCenter:parent.verticalCenter;
 			width:parent.width;
@@ -511,7 +511,7 @@ VerenaPage{
 							maximumLineCount:2;
 							wrapMode:Text.WrapAnywhere;
 							elide:Text.ElideRight;
-							font.pixelSize:24;
+							font.pixelSize: constants.pixel_xl;
 							font.bold: true;
 							text: qobj.username;
 						}
@@ -558,7 +558,7 @@ VerenaPage{
 						id:comment;
 						width:parent.width;
 						color: "black"; //color:parent.ListView.isCurrentItem?"red":"black";
-						font.pixelSize:20;
+						font.pixelSize: constants.pixel_large;
 						wrapMode:Text.WordWrap;
 						text:"<b>" + model.username + ": </b>" + model.content;
 					}

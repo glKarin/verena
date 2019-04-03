@@ -513,6 +513,7 @@
     </message>
     <message>
         <location filename="../qml/verena/NewTaskSheet.qml" line="76"/>
+        <location filename="../qml/verena/NewTaskSheet.qml" line="86"/>
         <source>Tips</source>
         <translation type="unfinished">帮助</translation>
     </message>
@@ -522,22 +523,22 @@
         <translation type="unfinished">通过输入的视频ID或视频URL解析视频地址。</translation>
     </message>
     <message>
-        <location filename="../qml/verena/NewTaskSheet.qml" line="97"/>
+        <location filename="../qml/verena/NewTaskSheet.qml" line="94"/>
         <source>Example:</source>
         <translation type="unfinished">实例：</translation>
     </message>
     <message>
-        <location filename="../qml/verena/NewTaskSheet.qml" line="104"/>
+        <location filename="../qml/verena/NewTaskSheet.qml" line="98"/>
         <source>Video url with schema</source>
         <translation type="unfinished">带协议的视频URL</translation>
     </message>
     <message>
-        <location filename="../qml/verena/NewTaskSheet.qml" line="111"/>
+        <location filename="../qml/verena/NewTaskSheet.qml" line="102"/>
         <source>or Video url without schema</source>
         <translation type="unfinished">或者不带协议的视频URL</translation>
     </message>
     <message>
-        <location filename="../qml/verena/NewTaskSheet.qml" line="118"/>
+        <location filename="../qml/verena/NewTaskSheet.qml" line="106"/>
         <source>or Video ID</source>
         <translation type="unfinished">或者视频ID</translation>
     </message>
@@ -714,7 +715,7 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="34"/>
+        <location filename="../main.cpp" line="38"/>
         <source>Can not create a single-instance object</source>
         <translation type="unfinished">不允许创建单例对象</translation>
     </message>
@@ -823,349 +824,339 @@
 <context>
     <name>SettingPage</name>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="11"/>
-        <location filename="../qml/verena/SettingPage.qml" line="144"/>
-        <location filename="../qml/verena/SettingPage.qml" line="286"/>
+        <location filename="../qml/verena/SettingPage.qml" line="8"/>
+        <location filename="../qml/verena/SettingPage.qml" line="141"/>
+        <location filename="../qml/verena/SettingPage.qml" line="283"/>
         <source>Setting</source>
         <translation type="unfinished">设置</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="59"/>
-        <location filename="../qml/verena/SettingPage.qml" line="420"/>
+        <location filename="../qml/verena/SettingPage.qml" line="56"/>
+        <location filename="../qml/verena/SettingPage.qml" line="413"/>
         <source>Warning</source>
         <translation type="unfinished">警告</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="60"/>
+        <location filename="../qml/verena/SettingPage.qml" line="57"/>
         <source>This settings is used by request for getting Youku video url. If not notified, do not change them. If you want to reset them when you have changed them, press &apos;Reset&apos; to set default.</source>
         <translation type="unfinished">这是用来获取Youku视频地址请求的设置. 如果没有特殊情况, 不要修改它们. 如果之前修改过, 可以点击重置恢复到该版本发布时的状态.</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="61"/>
-        <location filename="../qml/verena/SettingPage.qml" line="435"/>
+        <location filename="../qml/verena/SettingPage.qml" line="58"/>
+        <location filename="../qml/verena/SettingPage.qml" line="428"/>
         <source>Edit</source>
         <translation type="unfinished">编辑</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="62"/>
-        <location filename="../qml/verena/SettingPage.qml" line="435"/>
+        <location filename="../qml/verena/SettingPage.qml" line="59"/>
+        <location filename="../qml/verena/SettingPage.qml" line="428"/>
         <source>No edit</source>
         <translation type="unfinished">禁止编辑</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="80"/>
-        <location filename="../qml/verena/SettingPage.qml" line="86"/>
-        <location filename="../qml/verena/SettingPage.qml" line="92"/>
+        <location filename="../qml/verena/SettingPage.qml" line="77"/>
+        <location filename="../qml/verena/SettingPage.qml" line="83"/>
+        <location filename="../qml/verena/SettingPage.qml" line="89"/>
         <source>Get Youku video url request parameter</source>
         <translation type="unfinished">获取Youku视频地址请求的参数</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="98"/>
-        <location filename="../qml/verena/SettingPage.qml" line="104"/>
+        <location filename="../qml/verena/SettingPage.qml" line="95"/>
+        <location filename="../qml/verena/SettingPage.qml" line="101"/>
         <source>Get Youku video url request header</source>
         <translation type="unfinished">获取Youku视频地址请求的请求头</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="116"/>
-        <location filename="../qml/verena/SettingPage.qml" line="259"/>
+        <location filename="../qml/verena/SettingPage.qml" line="113"/>
+        <location filename="../qml/verena/SettingPage.qml" line="256"/>
         <source>General</source>
         <translation type="unfinished">一般</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="120"/>
-        <location filename="../qml/verena/SettingPage.qml" line="347"/>
+        <location filename="../qml/verena/SettingPage.qml" line="117"/>
+        <location filename="../qml/verena/SettingPage.qml" line="344"/>
         <source>Browser</source>
         <translation type="unfinished">浏览器</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="124"/>
+        <location filename="../qml/verena/SettingPage.qml" line="121"/>
         <source>Other</source>
         <translation type="unfinished">其他</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="148"/>
+        <location filename="../qml/verena/SettingPage.qml" line="145"/>
         <source>Default Video Player</source>
         <translation type="unfinished">默认视频播放器</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="155"/>
+        <location filename="../qml/verena/SettingPage.qml" line="152"/>
         <source>External Player</source>
         <translation type="unfinished">外部播放器</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="165"/>
+        <location filename="../qml/verena/SettingPage.qml" line="162"/>
         <source>Default External Player</source>
         <translation type="unfinished">默认外部播放器</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="172"/>
+        <location filename="../qml/verena/SettingPage.qml" line="169"/>
         <source>Harmattan Grob Browser</source>
         <translation type="unfinished">Harmattan Grob浏览器</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="176"/>
+        <location filename="../qml/verena/SettingPage.qml" line="173"/>
         <source>External KMPlayer</source>
         <translation type="unfinished">外部KMPlayer</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="186"/>
+        <location filename="../qml/verena/SettingPage.qml" line="183"/>
         <source>VerenaTouchHome Lock Portrait</source>
         <translation type="unfinished">VerenaTouchHome锁住竖屏</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="193"/>
+        <location filename="../qml/verena/SettingPage.qml" line="190"/>
         <source>Fullscreen</source>
         <translation type="unfinished">全屏</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="200"/>
+        <location filename="../qml/verena/SettingPage.qml" line="197"/>
         <source>Player Corner</source>
         <translation type="unfinished">播放器圆角</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="207"/>
+        <location filename="../qml/verena/SettingPage.qml" line="204"/>
         <source>Player Orientation</source>
         <translation type="unfinished">播放器方向</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="210"/>
+        <location filename="../qml/verena/SettingPage.qml" line="207"/>
         <source>Automatic</source>
         <translation type="unfinished">自动</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="214"/>
+        <location filename="../qml/verena/SettingPage.qml" line="211"/>
         <source>Lock Landscape</source>
         <translation type="unfinished">锁住横屏</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="218"/>
+        <location filename="../qml/verena/SettingPage.qml" line="215"/>
         <source>Lock Portrait</source>
         <translation type="unfinished">锁住竖屏</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="230"/>
-        <location filename="../qml/verena/SettingPage.qml" line="328"/>
+        <location filename="../qml/verena/SettingPage.qml" line="227"/>
+        <location filename="../qml/verena/SettingPage.qml" line="325"/>
         <source>Utility</source>
         <translation type="unfinished">工具</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="235"/>
+        <location filename="../qml/verena/SettingPage.qml" line="232"/>
         <source>Clear cache</source>
         <translation type="unfinished">清空缓存</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="240"/>
+        <location filename="../qml/verena/SettingPage.qml" line="237"/>
         <source>Clean disk cache successful</source>
         <translation type="unfinished">清空本地缓存成功</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="245"/>
+        <location filename="../qml/verena/SettingPage.qml" line="242"/>
         <source>Clear search history</source>
         <translation type="unfinished">清空搜索历史</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="249"/>
+        <location filename="../qml/verena/SettingPage.qml" line="246"/>
         <source>Clean search keyword history successful</source>
         <translation type="unfinished">清空搜索历史成功</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="263"/>
+        <location filename="../qml/verena/SettingPage.qml" line="260"/>
         <source>You can change card count and size by pinching with two finger, and enter edit mode by holding the card in play history page of Verena Touch Home.</source>
         <translation type="unfinished">在Verena主屏幕的播放历史屏，可以双指缩放卡片，长按卡片进入编辑模式。</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="267"/>
+        <location filename="../qml/verena/SettingPage.qml" line="264"/>
         <source>In option history page of Verena Touch Home, you can remove a history by holding the item, and do this option again by clicking this item.</source>
         <translation type="unfinished">在Verena主屏幕操作记录屏，点击操作项可以执行该操作，长按可以移除该项。</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="290"/>
+        <location filename="../qml/verena/SettingPage.qml" line="287"/>
         <source>Browser Auto Load Image</source>
         <translation type="unfinished">浏览器自动载入图片</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="297"/>
+        <location filename="../qml/verena/SettingPage.qml" line="294"/>
         <source>Browser Auto Parse Video</source>
         <translation type="unfinished">浏览器自动解析地址</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="304"/>
+        <location filename="../qml/verena/SettingPage.qml" line="301"/>
         <source>HTML5 Offline Local Storage</source>
         <translation type="unfinished">HTML5本地存储</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="311"/>
+        <location filename="../qml/verena/SettingPage.qml" line="308"/>
         <source>Browser Helper Tool</source>
         <translation type="unfinished">浏览器辅助工具</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="318"/>
+        <location filename="../qml/verena/SettingPage.qml" line="315"/>
         <source>User Agent</source>
         <translation type="unfinished">用户代理</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="375"/>
+        <location filename="../qml/verena/SettingPage.qml" line="372"/>
         <source>Version</source>
         <translation type="unfinished">版本</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="383"/>
+        <location filename="../qml/verena/SettingPage.qml" line="380"/>
         <source>Release</source>
         <translation type="unfinished">发布时间</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="387"/>
+        <location filename="../qml/verena/SettingPage.qml" line="384"/>
         <source>Code</source>
         <translation type="unfinished">CODE</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="391"/>
+        <location filename="../qml/verena/SettingPage.qml" line="388"/>
         <source>Platform</source>
         <translation type="unfinished">平台</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="401"/>
-        <source>If it responses &apos;403&apos; when requesting video url of Youku, please playing with system media player.</source>
-        <translation type="unfinished">如果用自带播放器播放视频出现403错误, 请使用外部播放器打开播放.</translation>
+        <location filename="../qml/verena/SettingPage.qml" line="398"/>
+        <source>Fixed youku video downloading and playing with internal player (2019/03/25).</source>
+        <translation type="unfinished">修复优酷视频内置播放器播放和下载(2019/03/25)</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="405"/>
-        <source>Add YoukuClient of Harmattan main page.</source>
-        <translation type="unfinished">添加一个Harmattan自带的优酷客户端风格的主页.</translation>
+        <location filename="../qml/verena/SettingPage.qml" line="402"/>
+        <source>Fixed breakpoint downloading error.</source>
+        <translation type="unfinished">修复视频断点下载错误</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="409"/>
-        <source>Add settings on player page.</source>
-        <translation type="unfinished">播放器增加设置页面</translation>
-    </message>
-    <message>
-        <location filename="../qml/verena/SettingPage.qml" line="466"/>
+        <location filename="../qml/verena/SettingPage.qml" line="459"/>
         <source>saved</source>
         <translation type="unfinished">已保存</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="484"/>
+        <location filename="../qml/verena/SettingPage.qml" line="477"/>
         <source>Load video url of youku once</source>
         <translation type="unfinished">每次获取优酷视频地址不需要重新解析</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="501"/>
+        <location filename="../qml/verena/SettingPage.qml" line="494"/>
         <source>Settings has reseted</source>
         <translation type="unfinished">设置已被重置</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="529"/>
+        <location filename="../qml/verena/SettingPage.qml" line="522"/>
         <source>Download</source>
         <translation type="unfinished">下载</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="541"/>
+        <location filename="../qml/verena/SettingPage.qml" line="534"/>
         <source>Contact</source>
         <translation type="unfinished">联系</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="556"/>
+        <location filename="../qml/verena/SettingPage.qml" line="549"/>
         <source>devel</source>
         <translation type="unfinished">开发版</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="558"/>
+        <location filename="../qml/verena/SettingPage.qml" line="551"/>
         <source>testing</source>
         <translation type="unfinished">测试版</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="560"/>
+        <location filename="../qml/verena/SettingPage.qml" line="553"/>
         <source>stable</source>
         <translation type="unfinished">正式版</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="255"/>
-        <location filename="../qml/verena/SettingPage.qml" line="343"/>
+        <location filename="../qml/verena/SettingPage.qml" line="252"/>
+        <location filename="../qml/verena/SettingPage.qml" line="340"/>
         <source>Tips</source>
         <translation type="unfinished">帮助</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="234"/>
+        <location filename="../qml/verena/SettingPage.qml" line="231"/>
         <source>Cache Size</source>
         <translation type="unfinished">缓存大小</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="244"/>
+        <location filename="../qml/verena/SettingPage.qml" line="241"/>
         <source>Search History Size</source>
         <translation type="unfinished">搜索关键字历史</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="332"/>
+        <location filename="../qml/verena/SettingPage.qml" line="329"/>
         <source>Browser Cache Size</source>
         <translation type="unfinished">浏览器本地存储大小</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="333"/>
+        <location filename="../qml/verena/SettingPage.qml" line="330"/>
         <source>Clear Browser Cache</source>
         <translation type="unfinished">清空浏览器本地存储</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="337"/>
+        <location filename="../qml/verena/SettingPage.qml" line="334"/>
         <source>Clean browser cache successful</source>
         <translation type="unfinished">清空浏览器本地存储成功</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="351"/>
+        <location filename="../qml/verena/SettingPage.qml" line="348"/>
         <source>If you want to use desktop user-agent, you can check &quot;Debian IceWeasel.&quot;</source>
         <translation type="unfinished">选择Debian IceWeasel，可提供桌面环境的用户代理。</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="370"/>
+        <location filename="../qml/verena/SettingPage.qml" line="367"/>
         <source>Updates</source>
         <translation type="unfinished">更新</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="396"/>
+        <location filename="../qml/verena/SettingPage.qml" line="393"/>
         <source>Changes</source>
         <translation type="unfinished">更新</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="401"/>
-        <source>Fixed Youku video parser script(2019/02/09).</source>
-        <translation type="unfinished">修复Youku视频地址解析(2019/02/09).</translation>
-    </message>
-    <message>
-        <location filename="../qml/verena/SettingPage.qml" line="416"/>
+        <location filename="../qml/verena/SettingPage.qml" line="409"/>
         <source>Youku</source>
         <translation type="unfinished">Youku相关</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="424"/>
+        <location filename="../qml/verena/SettingPage.qml" line="417"/>
         <source>Change request for getting Youku video url parameters.</source>
         <translation type="unfinished">修改获取Youku视频地址请求参数.</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="463"/>
+        <location filename="../qml/verena/SettingPage.qml" line="456"/>
         <source>Save</source>
         <translation type="unfinished">保存</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="497"/>
+        <location filename="../qml/verena/SettingPage.qml" line="490"/>
         <source>Reset</source>
         <translation type="unfinished">重置</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="508"/>
+        <location filename="../qml/verena/SettingPage.qml" line="501"/>
         <source>About</source>
         <translation type="unfinished">关于</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="521"/>
+        <location filename="../qml/verena/SettingPage.qml" line="514"/>
         <source>Verena is a web-video player based on YouKu Open API v2.   You can search, watch and download the videos, shows and playlists of www.youku.com.</source>
         <translation type="unfinished">Verena 可以简易浏览，搜索，播放和下载来自 &quot;www.youku.com&quot; 的视频，节目和专辑。  </translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="151"/>
+        <location filename="../qml/verena/SettingPage.qml" line="148"/>
         <source>Verena Player</source>
         <translation type="unfinished">Verena播放器</translation>
     </message>
     <message>
-        <location filename="../qml/verena/SettingPage.qml" line="168"/>
+        <location filename="../qml/verena/SettingPage.qml" line="165"/>
         <source>Harmattan Video-Suite</source>
         <translation type="unfinished">Harmattan视频套件</translation>
     </message>
@@ -1492,17 +1483,17 @@
 <context>
     <name>VDownloadManager</name>
     <message>
-        <location filename="../src/vdownloadmanager.cpp" line="239"/>
+        <location filename="../src/vdownloadmanager.cpp" line="234"/>
         <source>Download file fail</source>
         <translation type="unfinished">未能下载视频文件</translation>
     </message>
     <message>
-        <location filename="../src/vdownloadmanager.cpp" line="239"/>
+        <location filename="../src/vdownloadmanager.cpp" line="234"/>
         <source>Error</source>
         <translation type="unfinished">错误</translation>
     </message>
     <message>
-        <location filename="../src/vdownloadmanager.cpp" line="252"/>
+        <location filename="../src/vdownloadmanager.cpp" line="247"/>
         <source>Remove downloading task</source>
         <translation type="unfinished">移除正在下载任务</translation>
     </message>
@@ -1510,34 +1501,29 @@
 <context>
     <name>VDownloadTask</name>
     <message>
-        <location filename="../src/vdownloadtask.cpp" line="94"/>
-        <location filename="../src/vdownloadtask.cpp" line="106"/>
-        <location filename="../src/vdownloadtask.cpp" line="115"/>
+        <location filename="../src/vdownloadtask.cpp" line="105"/>
+        <location filename="../src/vdownloadtask.cpp" line="117"/>
+        <location filename="../src/vdownloadtask.cpp" line="126"/>
         <source>Can not make download folder</source>
         <translation type="unfinished">无法创建下载目录</translation>
     </message>
     <message>
-        <location filename="../src/vdownloadtask.cpp" line="125"/>
+        <location filename="../src/vdownloadtask.cpp" line="136"/>
         <source>Can not write data to file</source>
         <translation type="unfinished">无法写入文件</translation>
     </message>
     <message>
-        <location filename="../src/vdownloadtask.cpp" line="228"/>
+        <location filename="../src/vdownloadtask.cpp" line="238"/>
         <source>File is not exists</source>
         <translation type="unfinished">视频文件不存在</translation>
     </message>
     <message>
-        <location filename="../src/vdownloadtask.cpp" line="246"/>
+        <location filename="../src/vdownloadtask.cpp" line="256"/>
         <source>No download associated</source>
         <translation type="unfinished">无下载请求</translation>
     </message>
     <message>
-        <location filename="../src/vdownloadtask.cpp" line="275"/>
-        <source>Unknow Size</source>
-        <translation type="unfinished">未知大小</translation>
-    </message>
-    <message>
-        <location filename="../src/vdownloadtask.cpp" line="484"/>
+        <location filename="../src/vdownloadtask.cpp" line="492"/>
         <source>Can not append data to file</source>
         <translation type="unfinished">无法继续写入文件</translation>
     </message>
@@ -1652,89 +1638,89 @@
 <context>
     <name>VerenaPlayer</name>
     <message>
-        <location filename="../qml/verena/VerenaPlayer.qml" line="105"/>
+        <location filename="../qml/verena/VerenaPlayer.qml" line="140"/>
         <source>suggest to play with system media player</source>
         <translation type="unfinished">请尝试使用外部播放器播放</translation>
     </message>
     <message>
-        <location filename="../qml/verena/VerenaPlayer.qml" line="334"/>
+        <location filename="../qml/verena/VerenaPlayer.qml" line="369"/>
         <source>Fill Mode</source>
         <translation type="unfinished">视频拉伸模式</translation>
     </message>
     <message>
-        <location filename="../qml/verena/VerenaPlayer.qml" line="337"/>
+        <location filename="../qml/verena/VerenaPlayer.qml" line="372"/>
         <source>Fit</source>
         <translation type="unfinished">适当保持比例</translation>
     </message>
     <message>
-        <location filename="../qml/verena/VerenaPlayer.qml" line="341"/>
+        <location filename="../qml/verena/VerenaPlayer.qml" line="376"/>
         <source>Crop</source>
         <translation type="unfinished">填满保持比例</translation>
     </message>
     <message>
-        <location filename="../qml/verena/VerenaPlayer.qml" line="345"/>
+        <location filename="../qml/verena/VerenaPlayer.qml" line="380"/>
         <source>Stretch</source>
         <translation type="unfinished">拉伸</translation>
     </message>
     <message>
-        <location filename="../qml/verena/VerenaPlayer.qml" line="357"/>
+        <location filename="../qml/verena/VerenaPlayer.qml" line="392"/>
         <source>Full Progress</source>
         <translation type="unfinished">全局进度</translation>
     </message>
     <message>
-        <location filename="../qml/verena/VerenaPlayer.qml" line="368"/>
+        <location filename="../qml/verena/VerenaPlayer.qml" line="403"/>
         <source>Mute</source>
         <translation type="unfinished">静音</translation>
     </message>
     <message>
-        <location filename="../qml/verena/VerenaPlayer.qml" line="376"/>
+        <location filename="../qml/verena/VerenaPlayer.qml" line="411"/>
         <source>Player Orientation</source>
         <translation type="unfinished">播放器方向</translation>
     </message>
     <message>
-        <location filename="../qml/verena/VerenaPlayer.qml" line="379"/>
+        <location filename="../qml/verena/VerenaPlayer.qml" line="414"/>
         <source>Automatic</source>
         <translation type="unfinished">自动</translation>
     </message>
     <message>
-        <location filename="../qml/verena/VerenaPlayer.qml" line="383"/>
+        <location filename="../qml/verena/VerenaPlayer.qml" line="418"/>
         <source>Lock Landscape</source>
         <translation type="unfinished">锁住横屏</translation>
     </message>
     <message>
-        <location filename="../qml/verena/VerenaPlayer.qml" line="387"/>
+        <location filename="../qml/verena/VerenaPlayer.qml" line="422"/>
         <source>Lock Portrait</source>
         <translation type="unfinished">锁住竖屏</translation>
     </message>
     <message>
-        <location filename="../qml/verena/VerenaPlayer.qml" line="399"/>
+        <location filename="../qml/verena/VerenaPlayer.qml" line="434"/>
         <source>External player</source>
         <translation type="unfinished">外部播放器</translation>
     </message>
     <message>
-        <location filename="../qml/verena/VerenaPlayer.qml" line="408"/>
+        <location filename="../qml/verena/VerenaPlayer.qml" line="443"/>
         <source>Open video with external player</source>
         <translation type="unfinished">外部播放器打开</translation>
     </message>
     <message>
-        <location filename="../qml/verena/VerenaPlayer.qml" line="413"/>
-        <location filename="../qml/verena/VerenaPlayer.qml" line="433"/>
+        <location filename="../qml/verena/VerenaPlayer.qml" line="448"/>
+        <location filename="../qml/verena/VerenaPlayer.qml" line="468"/>
         <source>Video source is empty</source>
         <translation type="unfinished">视频地址为空</translation>
     </message>
     <message>
-        <location filename="../qml/verena/VerenaPlayer.qml" line="419"/>
+        <location filename="../qml/verena/VerenaPlayer.qml" line="454"/>
         <source>Copy url</source>
         <translation type="unfinished">复制地址</translation>
     </message>
     <message>
-        <location filename="../qml/verena/VerenaPlayer.qml" line="429"/>
+        <location filename="../qml/verena/VerenaPlayer.qml" line="464"/>
         <source>Copy video url to clipboard</source>
         <translation type="unfinished">视频地址已经复制到粘贴板</translation>
     </message>
     <message>
-        <location filename="../qml/verena/VerenaPlayer.qml" line="545"/>
-        <location filename="../qml/verena/VerenaPlayer.qml" line="553"/>
+        <location filename="../qml/verena/VerenaPlayer.qml" line="582"/>
+        <location filename="../qml/verena/VerenaPlayer.qml" line="592"/>
         <source>Can not support seek for this video</source>
         <translation type="unfinished">不支持视频流定位</translation>
     </message>

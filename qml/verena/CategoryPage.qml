@@ -223,7 +223,7 @@ VerenaPage{
 						maximumLineCount: 2;
 						wrapMode: Text.WordWrap;
             elide:Text.ElideRight;
-            font.pixelSize:20;
+            font.pixelSize: constants.pixel_large;
             text:qobj.categoryPage + "/" + qobj.categoryMaxPage;
         }
 

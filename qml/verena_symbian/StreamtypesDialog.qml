@@ -58,15 +58,13 @@ VerenaDialog {
 										height:60;
 										Text{
 											anchors.fill: parent;
-											font.pixelSize: 20;
+											font.pixelSize:  constants.pixel_xl;
 											color: model.url.length ? "white" : "red";
 											//text: model.url.length ? model.title + "[" + model.name + "]" : "<s>" + model.title + "[" + model.name + "]</s>";
 											text: /* model.title + */ "[" + model.name + "]";
 											horizontalAlignment: Text.AlignHCenter;
 											verticalAlignment: Text.AlignVCenter;
 											elide: Text.ElideLeft;
-
-											font.family: "Nokia Pure Text";
 										}
 										MouseArea{
 											anchors.fill:parent;

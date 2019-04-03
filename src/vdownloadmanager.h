@@ -4,11 +4,13 @@
 #include <QObject>
 #include <QList>
 
+class QNetworkAccessManager;
 class VNetworkAccessManager;
 class QNetworkReply;
 class VDownloadTask;
 class VVerenaDatabase;
 class QMutex;
+class QThread;
 
 class VDownloadManager : public QObject
 {
@@ -40,6 +42,8 @@ class VDownloadManager : public QObject
 		Q_INVOKABLE void continueTask(const QString &taskId);
 		Q_INVOKABLE void pauseTask(const QString &taskId);
 		Q_INVOKABLE void reloadTask(const QString &url, const QString &taskId);
+		QNetworkAccessManager * NetworkManager();
+		QThread * DownloadThread();
 		static VDownloadManager * Instance();
 
 		public Q_SLOTS:
@@ -74,6 +78,7 @@ Q_SIGNALS:
 		QList<QObject *> taskList[Total];
 		VVerenaDatabase *vdb;
 		QMutex *mutex;
+		QThread *oThread;
 
 }; 
 

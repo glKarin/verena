@@ -30,11 +30,9 @@ Dialog {
 					maximumLineCount: 2;
 					elide: Text.ElideRight;
 					wrapMode: Text.WordWrap;
-					font.pixelSize:24;
+					font.pixelSize: constants.pixel_xl;
 					font.bold: true;
 					color:"deeppink";
-
-					font.family: "Nokia Pure Text";
 				}
 				Rectangle{
 					id:space;

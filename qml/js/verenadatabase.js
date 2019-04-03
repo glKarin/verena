@@ -77,10 +77,13 @@ var VerenaDatabase = function(name, desc, size){
 			}
 
 			this.getTableSize = function(tname){
-				var rd;
-				db.readTransaction(function(ta){
+				var rd = 0;
+				var rs;
+				db.readTransaction(function(tx){
 					try{
-						rd = ta.executeSql('SELECT * FROM %1'.arg(tname)).rows.length;
+						rs = tx.executeSql('SELECT COUNT(1) AS \'_Count\' FROM KeywordHistory');
+						if(rs.rows.length === 1)
+							rd = rs.rows.item(0)._Count;
 					}catch(e){
 						rd = 0;
 					}

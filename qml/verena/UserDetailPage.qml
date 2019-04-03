@@ -127,7 +127,7 @@ VerenaPage{
 						maximumLineCount:3;
 						wrapMode:Text.WrapAnywhere;
 						elide:Text.ElideRight;
-						font.pixelSize:28;
+						font.pixelSize: constants.pixel_xl;
 						text: qobj.userName;
 						font.bold: true;
 					}
@@ -174,7 +174,7 @@ VerenaPage{
 						Text{
 							anchors.left:parent.left;
 							color:"black";
-							font.pixelSize:28;
+							font.pixelSize: constants.pixel_xl;
 							anchors.verticalCenter:parent.verticalCenter
 							text:"<b>" + model.name +"</b>";
 						}

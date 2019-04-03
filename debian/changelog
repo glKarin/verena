@@ -1,3 +1,10 @@
+verena (0.9.0harmattan5) unstable; urgency=low
+
+  * Fixed youku video downloading and playing with internal player (2019/03/25).
+  * Fixed breakpoint downloading error.
+
+ -- Karin Zhao <beyondk2000@gmail.com>  Mon, 25 Mar 2019 13:48:14 +0800
+
 verena (0.9.0harmattan2) unstable; urgency=low
 
   * Fixed youku parse script (2019/02/09). But it return '403', can play it with system media player, but can not download it.

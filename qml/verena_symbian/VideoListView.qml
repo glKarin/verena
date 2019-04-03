@@ -101,13 +101,11 @@ Item{
 							width:parent.width;
 							height:parent.height / 4 * 3;
 							color:"black";
-							font.pixelSize:18;
+							font.pixelSize: constants.pixel_large;
 							maximumLineCount:3;
 							elide:Text.ElideRight;
 							text:model.title;
 							wrapMode:Text.WrapAnywhere;
-
-							font.family: "Nokia Pure Text";
 							MouseArea{
 								anchors.fill:parent;
 								onClicked:{
@@ -135,10 +133,8 @@ Item{
 									width:parent.width - parent.height;
 									color:"black";
 									clip:true;
-									font.pixelSize:16;
+									font.pixelSize: constants.pixel_medium;
 									text:model.published.split(" ")[0];
-
-									font.family: "Nokia Pure Text";
 								}
 							}
 							Row{
@@ -154,12 +150,10 @@ Item{
 								Text{
 									anchors.verticalCenter:parent.verticalCenter;
 									width:parent.width - parent.height;
-									font.pixelSize:16;
+									font.pixelSize: constants.pixel_medium;
 									clip:true;
 									color:"black";
 									text:model.view_count;
-
-									font.family: "Nokia Pure Text";
 								}
 							}
 						}

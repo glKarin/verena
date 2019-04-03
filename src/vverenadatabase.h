@@ -13,12 +13,14 @@ class VVerenaDatabase
 		~VVerenaDatabase();
 		void openDatabase();
 		void addTable(const QString &name, const QStringList &args, bool over = false);
-		int queryTable(const QString &name, const QString &key, const QString &value);
+		int queryTable(const QString &name, const QString &key = QString(), const QString &value = QString());
 		QVariantList getAllDataFromTable(const QString &name) const;
 		void addElementToTable(const QString &name, const QVariantList &args);
 		void removeElementFromTable(const QString &name, const QString &key, const QString &value);
 		void clearTable(const QString &name);
 		void closeDatabase();
+
+		void AddElementToTable(const QString &name, const QVariantMap &args);
 		
 	private:
 		Q_DISABLE_COPY(VVerenaDatabase)

@@ -34,10 +34,8 @@ Item{
 		height: parent.height;
 		verticalAlignment: Text.AlignVCenter;
 		elide: Text.ElideRight;
-		font.pixelSize:20;
+		font.pixelSize: constants.pixel_xl;
         color:"white";
-
-		font.family: "Nokia Pure Text";
 	}
 	Rectangle{
 		anchors{

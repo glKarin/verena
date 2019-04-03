@@ -26,7 +26,7 @@ Item{
 				height: parent.height;
 				horizontalAlignment: Text.AlignLeft;
 				verticalAlignment: Text.AlignVCenter;
-				font.pixelSize:28;
+				font.pixelSize: constants.pixel_xl;
 				color:"blue";
 				font.bold: true;
 				text: root.text;

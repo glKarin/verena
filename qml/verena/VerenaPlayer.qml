@@ -1,6 +1,7 @@
 import QtQuick 1.1
 import com.nokia.meego 1.1
-import QtMultimediaKit 1.1
+//import QtMultimediaKit 1.1
+import karin.verena.extensions 1.5
 import QtMobility.systeminfo 1.1
 import "../js/utility.js" as Utility
 
@@ -47,8 +48,8 @@ Rectangle{
 		video.source = root.source;
 		if(video.source != "")
 		{
-			video.fillMode = Video.PreserveAspectFit;
-			fillmodellist.currentValue = Video.PreserveAspectFit;
+			video.fillMode = VVideo.PreserveAspectFit;
+			fillmodellist.currentValue = VVideo.PreserveAspectFit;
 			video.play();
 
 			if(pos && video.seekable)
@@ -97,12 +98,46 @@ Rectangle{
 		}
 	}
 
-	Video {
+	VVideo {
 		id: video;
 		anchors.fill:parent;
+		headersEnabled: true;
+		requestHeaders: [
+			/*
+      {
+				name: "Referer",
+				value: settingsObject.youku_referer,
+			},
+			*/
+			{
+				name: "User-Agent",
+				//value: settingsObject.youku_ua,
+				value: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36",
+			},
+			{
+				name: "X-Forwarded-For",
+				//name: "HTTP_X_FORWARDED_FOR",
+				value: vut.RandIP(),
+			},
+			{
+				name: "Accept",
+				value: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", //                "Accept-Encoding: gzip, deflate, br",
+			},
+			{
+				name: "Accept-Language",
+				value: "zh-CN,en-US;q=0.7,en;q=0.3",
+			},
+			/*
+			{
+				//name: "Client-Ip",,
+				name: "CLIENT-IP",
+				value: vut.RandIP(),
+			},
+			*/
+		];
 		onError:{
-			if(error !== Video.NoError){
-				setMsg(error + " : " + errorString + (error === Video.NetworkError ? ", " + qsTr("suggest to play with system media player") : ""));
+			if(error !== VVideo.NoError){
+				setMsg(error + " : " + errorString + (error === VVideo.NetworkError ? ", " + qsTr("suggest to play with system media player") : ""));
 				root.stopOnly();
 			}
 		}
@@ -113,7 +148,7 @@ Rectangle{
 		 }
 		 */
 		onStatusChanged:{
-			if(status === Video.EndOfMedia){
+			if(status === VVideo.EndOfMedia){
 				root.endOfMedia();
 				video.position = 0;
 			}
@@ -129,14 +164,14 @@ Rectangle{
 			switch(value)
 			{
 				case 0:
-				video.fillMode = Video.Stretch;
+				video.fillMode = VVideo.Stretch;
 				break;
 				case 2:
-				video.fillMode = Video.PreserveAspectCrop;
+				video.fillMode = VVideo.PreserveAspectCrop;
 				break;
 				case 1:
 				default:
-				video.fillMode = Video.PreserveAspectFit;
+				video.fillMode = VVideo.PreserveAspectFit;
 				break;
 			}
 
@@ -207,7 +242,7 @@ Rectangle{
 			anchors.right:table.left;
 			anchors.verticalCenter:parent.verticalCenter;
 			color:"white";
-			pixelSize:22;
+			pixelSize: constants.pixel_large;
 			isOver: visible;
 			visible:parent.height === parent.theight;
 		}
@@ -335,18 +370,18 @@ Rectangle{
 								subitems: [
 									{
 										text: qsTr("Fit"),
-										value: Video.PreserveAspectFit
+										value: VVideo.PreserveAspectFit
 									},
 									{
 										text: qsTr("Crop"),
-										value: Video.PreserveAspectCrop
+										value: VVideo.PreserveAspectCrop
 									},
 									{
 										text: qsTr("Stretch"),
-										value: Video.Stretch
+										value: VVideo.Stretch
 									},
 								]
-								currentValue: Video.PreserveAspectFit;
+								currentValue: VVideo.PreserveAspectFit;
 								onClicked:{
 									timer.restart();
 									video.setFillMode(value);
@@ -515,8 +550,10 @@ Rectangle{
 			anchors.top:parent.top;
 			anchors.bottom:progressBar.top;
 			color:"white";
-			width:60;
-			font.pixelSize:20;
+			width: progressBar.width / 2;
+			horizontalAlignment: Text.AlignLeft;
+			verticalAlignment: Text.AlignVCenter;
+			font.pixelSize: constants.pixel_large;
 			visible:parent.height === parent.theight;
 			text:visible ? Utility.castMS2S(video.position) : "";
 		}
@@ -546,11 +583,14 @@ Rectangle{
 					}
 				}
 				onPositionChanged:{
-                    timer.restart();
-					if(video.seekable) {
-						video.position = video.duration * mouse.x / parent.width;
-					} else {
-						setMsg(qsTr("Can not support seek for this video"));
+					if(pressed)
+					{
+						timer.restart();
+						if(video.seekable) {
+							video.position = video.duration * mouse.x / parent.width;
+						} else {
+							setMsg(qsTr("Can not support seek for this video"));
+						}
 					}
 				}
 			}
@@ -562,8 +602,10 @@ Rectangle{
 			anchors.top:parent.top;
 			anchors.bottom:progressBar.top;
 			color:"white";
-			width:60;
-			font.pixelSize:20;
+			width: progressBar.width / 2;
+			horizontalAlignment: Text.AlignRight;
+			verticalAlignment: Text.AlignVCenter;
+			font.pixelSize: constants.pixel_large;
 			visible:parent.height === parent.theight;
 			text:visible ? Utility.castMS2S(video.duration) : "";
 		}

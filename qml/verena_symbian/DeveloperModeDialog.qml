@@ -59,11 +59,9 @@ VerenaDialog {
 						id:filename;
 						color:parent.ListView.isCurrentItem ? "black" : "white";
 						anchors.verticalCenter:parent.verticalCenter;
-						font.pixelSize:18;
+						font.pixelSize: constants.pixel_large;
 						elide:Text.ElideLeft;
 						text:model.name;
-
-						font.family: "Nokia Pure Text";
 					}
 					MouseArea{
 						anchors.fill:parent;
@@ -155,12 +153,10 @@ VerenaDialog {
 					height:parent.height;
 					spacing:4;
 					Text{
-						font.pixelSize:20;
+						font.pixelSize: constants.pixel_xl;
 						anchors.verticalCenter:parent.verticalCenter;
 						color:qobj.hasEdited ? "red" : "white";
 						text:!code.readOnly ? "Editing" : "Edit" + " -> ";
-
-						font.family: "Nokia Pure Text";
 					}
 					Switch{
 						id:switches;

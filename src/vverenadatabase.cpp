@@ -11,6 +11,9 @@
 
 #define V_SQL "QSQLITE"
 
+#define V_PLACEHOLDER(x) (QString(":") + x)
+#define V_DBG_ERR(x) qDebug() << QString("[WARNING]: SQL[%1] -> %2").arg(x.lastQuery()).arg(x.lastError().text())
+
 VVerenaDatabase::VVerenaDatabase(const QString &name, const QString &user, const QString &password)
 {
 	database = QSqlDatabase::addDatabase(V_SQL, name);
@@ -56,11 +59,11 @@ QVariantList VVerenaDatabase::getAllDataFromTable(const QString &name) const
 	{
 		QSqlTableModel model(0, database);
 		model.setTable(name);
-        model.select();
+		model.select();
 		for (int i = 0; i < model.rowCount(); i++)
 		{
 			QSqlRecord record = model.record(i);
-			QMap<QString, QVariant> map;
+			QVariantMap map;
 			for(int j = 0; j < record.count(); j++)
 			{
 				map.insert(record.field(j).name(), record.value(j));
@@ -75,6 +78,9 @@ void VVerenaDatabase::addTable(const QString &name, const QStringList &args, boo
 {
 	if(!check())
 		return;
+
+	const QString DropSQL = QString("DROP TABLE IF EXISTS %1").arg(name);
+	const QString CreateSQL = QString("CREATE TABLE IF NOT EXISTS %1 (%2)").arg(name).arg(args.join(","));
 	QSqlQuery query(database);
 	if(database.tables().contains(name))
 	{
@@ -82,26 +88,26 @@ void VVerenaDatabase::addTable(const QString &name, const QStringList &args, boo
 		{
 			if(database.transaction())
 			{
-				query.exec(QString("DROP TABLE IF EXISTS %1").arg(name));
-				query.exec(QString("CREATE TABLE IF NOT EXISTS %1 (%2)").arg(name).arg(args.join(",")));
+				query.exec(DropSQL);
+				query.exec(CreateSQL);
 				if(!database.commit())
 				{
-					qDebug() << "[WARNING]: SQL -> " << query.lastError().text();
+					V_DBG_ERR(query);
 					if(!database.rollback())
 					{
-						qDebug() << "[WARNING]: SQL -> " << query.lastError().text();
+						V_DBG_ERR(query);
 					}
 				}
 			}
 			else
 			{
-				if(!query.exec(QString("DROP TABLE IF EXISTS %1").arg(name)))
+				if(!query.exec(DropSQL))
 				{
-					qDebug() << "[WARNING]: SQL -> " << query.lastError().text();
+					V_DBG_ERR(query);
 				}
-				if(!query.exec(QString("CREATE TABLE IF NOT EXISTS %1 (%2)").arg(name).arg(args.join(","))))
+				if(!query.exec(CreateSQL))
 				{
-					qDebug() << "[WARNING]: SQL -> " << query.lastError().text();
+					V_DBG_ERR(query);
 				}
 			}
 		}
@@ -114,21 +120,21 @@ void VVerenaDatabase::addTable(const QString &name, const QStringList &args, boo
 	{
 		if(database.transaction())
 		{
-			query.exec(QString("CREATE TABLE IF NOT EXISTS %1 (%2)").arg(name).arg(args.join(",")));
+			query.exec(CreateSQL);
 			if(!database.commit())
 			{
-				qDebug() << "[WARNING]: SQL -> " << query.lastError().text();
+				V_DBG_ERR(query);
 				if(!database.rollback())
 				{
-					qDebug() << "[WARNING]: SQL -> " << query.lastError().text();
+					V_DBG_ERR(query);
 				}
 			}
 		}
 		else
 		{
-			if(!query.exec(QString("CREATE TABLE IF NOT EXISTS %1 (%2)").arg(name).arg(args.join(","))))
+			if(!query.exec(CreateSQL))
 			{
-				qDebug() << "[WARNING]: SQL -> " << query.lastError().text();
+				V_DBG_ERR(query);
 			}
 		}
 	}
@@ -136,15 +142,16 @@ void VVerenaDatabase::addTable(const QString &name, const QStringList &args, boo
 
 int VVerenaDatabase::queryTable(const QString &name, const QString &key, const QString &value)
 {
-	if(check())
+	if(!check())
+		return 0;
+	const QString SQL = QString("SELECT COUNT(1) AS '_Count' FROM %1").arg(name) + (!key.isEmpty() && !value.isEmpty() ? QString(" WHERE %1 = %2").arg(key).arg(value) : "");
+	QSqlQuery query(database);
+	if(!query.exec(SQL))
 	{
-		QSqlQuery query(database);
-		if(!query.exec(QString("SELECT %1 FROM %2 WHERE %3 = %4").arg(key).arg(name).arg(key).arg(value)))
-		{
-			qDebug() << "[WARNING]: SQL -> " << query.lastError().text();
-		}
-		return query.size();
+		V_DBG_ERR(query);
 	}
+	if(query.first())
+		return query.value(0).toUInt();
 	return 0;
 }
 
@@ -157,10 +164,11 @@ void VVerenaDatabase::addElementToTable(const QString &name, const QVariantList 
 	{
 		sl<<"?";
 	}
+	const QString SQL = QString("INSERT OR REPLACE INTO %1 VALUES (%2)").arg(name).arg(sl.join(","));
 	QSqlQuery query(database);
 	if(database.transaction())
 	{
-		query.prepare(QString("INSERT OR REPLACE INTO %1 VALUES (%2)").arg(name).arg(sl.join(",")));
+		query.prepare(SQL);
 		for(QVariantList::const_iterator itor = args.constBegin();
 				itor != args.constEnd();
 				++itor)
@@ -170,15 +178,15 @@ void VVerenaDatabase::addElementToTable(const QString &name, const QVariantList 
 		query.exec();
 		if(!database.commit())
 		{
-			qDebug() << "[WARNING]: SQL -> " << query.lastError().text();
+			V_DBG_ERR(query);
 			if(!database.rollback()){
-				qDebug() << "[WARNING]: SQL -> " << query.lastError().text();
+				V_DBG_ERR(query);
 			}
 		}
 	}
 	else
 	{
-		query.prepare(QString("INSERT OR REPLACE INTO %1 VALUES (%2)").arg(name).arg(sl.join(",")));
+		query.prepare(SQL);
 		for(QVariantList::const_iterator itor = args.constBegin();
 				itor != args.constEnd();
 				++itor)
@@ -187,7 +195,7 @@ void VVerenaDatabase::addElementToTable(const QString &name, const QVariantList 
 		}
 		if(!query.exec())
 		{
-			qDebug() << "[WARNING]: SQL -> " << query.lastError().text();
+			V_DBG_ERR(query);
 		}
 	}
 }
@@ -196,24 +204,25 @@ void VVerenaDatabase::removeElementFromTable(const QString &name, const QString 
 {
 	if(!check())
 		return;
+	const QString SQL = QString("DELETE FROM %1 WHERE %2 = %3").arg(name).arg(key).arg(value);
 	QSqlQuery query(database);
 	if(database.transaction())
 	{
-		query.exec(QString("DELETE FROM %1 WHERE %2 = %3").arg(name).arg(key).arg(value));
+		query.exec(SQL);
 		if(!database.commit())
 		{
-			qDebug() << "[WARNING]: SQL -> " << query.lastError().text();
+			V_DBG_ERR(query);
 			if(!database.rollback()){
-				qDebug() << "[WARNING]: SQL -> " << query.lastError().text();
+				V_DBG_ERR(query);
 			}
 		}
-		qDebug() << "[WARNING]: SQL -> " << query.lastQuery();
+		V_DBG_ERR(query);
 	}
 	else
 	{
-		if(!query.exec(QString("DELETE FROM %1 WHERE %2 = %3").arg(name).arg(key).arg(value)))
+		if(!query.exec(SQL))
 		{
-			qDebug() << "[WARNING]: SQL -> " << query.lastError().text();
+			V_DBG_ERR(query);
 		}
 	}
 }
@@ -222,23 +231,24 @@ void VVerenaDatabase::clearTable(const QString &name)
 {
 	if(!check())
 		return;
+	const QString SQL = QString("DELETE FROM %1").arg(name);
 	QSqlQuery query(database);
 	if(database.transaction())
 	{
-		query.exec(QString("DELETE FROM %1").arg(name));
+		query.exec(SQL);
 		if(!database.commit())
 		{
-			qDebug() << "[WARNING]: SQL -> " << query.lastError().text();
+			V_DBG_ERR(query);
 			if(!database.rollback()){
-				qDebug() << "[WARNING]: SQL -> " << query.lastError().text();
+				V_DBG_ERR(query);
 			}
 		}
 	}
 	else
 	{
-		if(!query.exec(QString("DELETE FROM %1").arg(name)))
+		if(!query.exec(SQL))
 		{
-			qDebug() << "[WARNING]: SQL -> " << query.lastError().text();
+			V_DBG_ERR(query);
 		}
 	}
 }
@@ -248,3 +258,53 @@ void VVerenaDatabase::closeDatabase()
 	if(check())
 		database.close();
 }
+
+
+
+void VVerenaDatabase::AddElementToTable(const QString &name, const QVariantMap &args)
+{
+	if(!check())
+		return;
+
+	QStringList sl;
+	QStringList names;
+	const QString SQL = QString("INSERT OR REPLACE INTO %1 (%2) VALUES (%3)").arg(name).arg(sl.join(",")).arg(names.join(","));
+	for(QVariantMap::const_iterator itor = args.constBegin();
+			itor != args.constEnd(); ++itor)
+	{
+		sl << itor.key();
+		names << V_PLACEHOLDER(itor.key());
+	}
+	QSqlQuery query(database);
+	if(database.transaction())
+	{
+		query.prepare(SQL);
+		for(QVariantMap::const_iterator itor = args.constBegin();
+				itor != args.constEnd(); ++itor)
+		{
+			query.bindValue(V_PLACEHOLDER(itor.key()), itor.value());
+		}
+		query.exec();
+		if(!database.commit())
+		{
+			V_DBG_ERR(query);
+			if(!database.rollback()){
+				V_DBG_ERR(query);
+			}
+		}
+	}
+	else
+	{
+		query.prepare(SQL);
+		for(QVariantMap::const_iterator itor = args.constBegin();
+				itor != args.constEnd(); ++itor)
+		{
+			query.bindValue(V_PLACEHOLDER(itor.key()), itor.value());
+		}
+		if(!query.exec())
+		{
+			V_DBG_ERR(query);
+		}
+	}
+}
+

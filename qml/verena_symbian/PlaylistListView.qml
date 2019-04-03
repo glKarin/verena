@@ -63,13 +63,11 @@ Item{
 							width:parent.width;
 							height:parent.height / 2;
 							color:"black";
-							font.pixelSize:20;
+							font.pixelSize: constants.pixel_xl;
 							wrapMode:Text.WrapAnywhere;
 							elide:Text.ElideRight;
 							maximumLineCount:2;
 							text:model.name;
-
-							font.family: "Nokia Pure Text";
 						}
 						Row{
 							width:parent.width;
@@ -83,12 +81,10 @@ Item{
 							Text{
 								width:parent.width - parent.height;
 								anchors.verticalCenter:parent.verticalCenter;
-								font.pixelSize:18;
+								font.pixelSize: constants.pixel_large;
 								elide:Text.ElideRight;
 								color:"black";
 								text: model.username;
-
-								font.family: "Nokia Pure Text";
 							}
 						}
 						Row{
@@ -108,10 +104,8 @@ Item{
 									width:parent.width - parent.height;
 									color:"black";
 									clip:true;
-									font.pixelSize:18;
+									font.pixelSize: constants.pixel_large;
 									text:model.published.split(" ")[0];
-
-									font.family: "Nokia Pure Text";
 								}
 							}
 							Row{
@@ -127,11 +121,9 @@ Item{
 									anchors.verticalCenter:parent.verticalCenter;
 									width:parent.width - parent.height;
 									color:"black";
-									font.pixelSize:18;
+									font.pixelSize: constants.pixel_large;
 									clip:true;
 									text:model.video_count;
-
-									font.family: "Nokia Pure Text";
 								}
 							}
 						}

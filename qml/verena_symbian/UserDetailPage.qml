@@ -127,12 +127,10 @@ VerenaPage{
 						maximumLineCount:3;
 						wrapMode:Text.WrapAnywhere;
 						elide:Text.ElideRight;
-						font.pixelSize:24;
+						font.pixelSize: constants.pixel_xl;
 						text: qobj.userName;
 						font.bold: true;
-
 						color: "white";
-						font.family: "Nokia Pure Text";
 					}
 				}
 			}
@@ -177,11 +175,9 @@ VerenaPage{
 						Text{
 							anchors.left:parent.left;
 							color:"black";
-							font.pixelSize:24;
+							font.pixelSize: constants.pixel_xl;
 							anchors.verticalCenter:parent.verticalCenter
 							text:"<b>" + model.name +"</b>";
-
-							font.family: "Nokia Pure Text";
 						}
 						ToolIcon{
 							anchors.right:parent.right;
@@ -216,7 +212,7 @@ VerenaPage{
 		}
 		ToolIcon{
 			enabled:qobj.internalUserId.length !== 0;
-			iconId: qobj.isCollected ? "toolbar-delete" : "toolbar-add";
+			iconId: qobj.isCollected ? "toolbar-favorite-mark" : "toolbar-favorite-unmark";
 			onClicked:{
 				qobj.addOrRemoveCollection();
 			}

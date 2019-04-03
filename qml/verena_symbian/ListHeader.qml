@@ -72,7 +72,7 @@ Item {
 		}
 		VButton{
 			id:search;
-			iconSource: "toolbar-search";
+			iconSource_2: "image://theme/icon-m-toolbar-search";
 			anchors.verticalCenter: parent.verticalCenter;
 			enabled: !textfield.readOnly && textfield.text.length !== 0;
 			platformStyle: VButtonStyle {

@@ -122,13 +122,11 @@ VerenaPage{
 								width:parent.width;
 								height:parent.height / 4 * 3;
 								color:"black";
-								font.pixelSize:18;
+								font.pixelSize: constants.pixel_large;
 								maximumLineCount:3;
 								elide:Text.ElideRight;
 								text:model.name;
 								wrapMode:Text.WrapAnywhere;
-
-								font.family: "Nokia Pure Text";
 							}
 							Row{
 								width:parent.width;
@@ -146,10 +144,8 @@ VerenaPage{
 										anchors.verticalCenter:parent.verticalCenter;
 										width:parent.width - parent.height;
 										clip:true;
-										font.pixelSize:16;
+										font.pixelSize: constants.pixel_medium;
 										text:model.collect_time;
-
-										font.family: "Nokia Pure Text";
 									}
 								}
 								Row{
@@ -164,11 +160,9 @@ VerenaPage{
 									Text{
 										anchors.verticalCenter:parent.verticalCenter;
 										width:parent.width - parent.height;
-										font.pixelSize:16;
+										font.pixelSize: constants.pixel_medium;
 										clip:true;
 										text:model.rank;
-
-										font.family: "Nokia Pure Text";
 									}
 								}
 							}
@@ -261,13 +255,11 @@ VerenaPage{
 								width:parent.width;
 								height:parent.height / 2;
 								color:"black";
-								font.pixelSize:20;
+								font.pixelSize: constants.pixel_large;
 								maximumLineCount:2;
 								elide:Text.ElideRight;
 								text:model.name;
 								wrapMode:Text.WrapAnywhere;
-
-								font.family: "Nokia Pure Text";
 							}
 							Row{
 								width:parent.width;
@@ -282,10 +274,8 @@ VerenaPage{
 									anchors.verticalCenter:parent.verticalCenter;
 									width:parent.width - parent.height;
 									clip:true;
-									font.pixelSize:20;
+									font.pixelSize: constants.pixel_medium;
 									text:model.collect_time;
-
-									font.family: "Nokia Pure Text";
 								}
 							}
 							Row{
@@ -300,11 +290,9 @@ VerenaPage{
 								Text{
 									anchors.verticalCenter:parent.verticalCenter;
 									width:parent.width - parent.height;
-									font.pixelSize:20;
+									font.pixelSize: constants.pixel_medium;
 									clip:true;
 									text:model.rank;
-
-									font.family: "Nokia Pure Text";
 								}
 							}
 						}
@@ -394,13 +382,11 @@ VerenaPage{
 								width:parent.width;
 								height:parent.height / 2;
 								color:"black";
-								font.pixelSize:20;
+								font.pixelSize: constants.pixel_large;
 								maximumLineCount:2;
 								elide:Text.ElideRight;
 								text:model.name;
 								wrapMode:Text.WrapAnywhere;
-
-								font.family: "Nokia Pure Text";
 							}
 							Row{
 								width:parent.width;
@@ -415,10 +401,8 @@ VerenaPage{
 									anchors.verticalCenter:parent.verticalCenter;
 									width:parent.width - parent.height;
 									clip:true;
-									font.pixelSize:20;
+									font.pixelSize: constants.pixel_medium;
 									text:model.collect_time;
-
-									font.family: "Nokia Pure Text";
 								}
 							}
 							Row{
@@ -433,11 +417,9 @@ VerenaPage{
 								Text{
 									anchors.verticalCenter:parent.verticalCenter;
 									width:parent.width - parent.height;
-									font.pixelSize:20;
+									font.pixelSize: constants.pixel_medium;
 									clip:true;
 									text:model.rank;
-
-									font.family: "Nokia Pure Text";
 								}
 							}
 						}
@@ -528,21 +510,17 @@ VerenaPage{
 								width:parent.width;
 								height:parent.height / 4;
 								color:"black";
-								font.pixelSize:18;
+								font.pixelSize: constants.pixel_xl;
 								elide:Text.ElideRight;
 								text: "<b>" + qsTr("User") + ": </b>" + model.name;
-
-								font.family: "Nokia Pure Text";
 							}
 							Text{
 								width:parent.width;
 								height:parent.height / 4;
 								color:"black";
-								font.pixelSize:20;
+								font.pixelSize: constants.pixel_large;
 								elide:Text.ElideRight;
 								text:"<b>ID: </b>" + model.vid;
-
-								font.family: "Nokia Pure Text";
 							}
 							Row{
 								width:parent.width;
@@ -557,10 +535,8 @@ VerenaPage{
 									anchors.verticalCenter:parent.verticalCenter;
 									width:parent.width - parent.height;
 									clip:true;
-									font.pixelSize:20;
+									font.pixelSize: constants.pixel_medium;
 									text:model.collect_time;
-
-									font.family: "Nokia Pure Text";
 								}
 							}
 							Row{
@@ -575,11 +551,9 @@ VerenaPage{
 								Text{
 									anchors.verticalCenter:parent.verticalCenter;
 									width:parent.width - parent.height;
-									font.pixelSize:20;
+									font.pixelSize: constants.pixel_medium;
 									clip:true;
 									text:model.rank;
-
-									font.family: "Nokia Pure Text";
 								}
 							}
 						}

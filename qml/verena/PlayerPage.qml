@@ -572,7 +572,7 @@ Page{
 				Text{
 					width: logcol.width;
 					height:25;
-					font.pixelSize:24;
+					font.pixelSize: constants.pixel_xl;
 					color:"white";
 					text:model.value;
 				}

@@ -6,6 +6,7 @@
 #include <QNetworkReply>
 
 class QFile;
+class VDownloadManager;
 
 class VDownloadTask : public QObject
 {
@@ -22,8 +23,8 @@ class VDownloadTask : public QObject
 		Q_PROPERTY(QString name READ name NOTIFY nameChanged() FINAL)
 		Q_PROPERTY(QString title READ title NOTIFY titleChanged() FINAL)
 		Q_PROPERTY(QString path READ path NOTIFY pathChanged FINAL)
-		Q_PROPERTY(QString read READ read NOTIFY readChanged FINAL)
-		Q_PROPERTY(QString total READ total NOTIFY totalChanged FINAL)
+		Q_PROPERTY(qint64 read READ read NOTIFY readChanged FINAL)
+		Q_PROPERTY(qint64 total READ total NOTIFY totalChanged FINAL)
 		Q_PROPERTY(int percent  READ percent NOTIFY percentChanged FINAL)
 		Q_ENUMS(State)
 		Q_PROPERTY(State state READ state NOTIFY stateChanged FINAL)
@@ -36,7 +37,7 @@ class VDownloadTask : public QObject
 		Q_PROPERTY(QString source READ source NOTIFY sourceChanged FINAL)
 		
 	public:
-		VDownloadTask(QObject *parent = 0);
+		VDownloadTask(VDownloadManager *m = 0, QObject *parent = 0);
 		~VDownloadTask();
 		bool readySave();
 		bool continueSave();
@@ -44,21 +45,21 @@ class VDownloadTask : public QObject
 		void endWork(State state);
 		void abort();
 		QString path() const;
-		QString read() const { return cpp_read; }
+		qint64 read() const { return cpp_read; }
 		QString source() const;
-		QString total() const;
+		qint64 total() const;
 		int percent() const {return cpp_percent; }
 		QString name() const;
 		QString title() const;
 		State state() const;
-		void setRead(const QString &read) {
+		void setRead(const qint64 &read) {
 			if(cpp_read != read)
 			{
 				cpp_read = read;
 				emit readChanged();
 			}
 		}
-		void setTotal(const QString &total);
+		void setTotal(const qint64 &total);
 		void setState(State s);
 		void setSource(const QString &s);
 		void setPercent(int i) {
@@ -75,14 +76,15 @@ class VDownloadTask : public QObject
 		void setReply(QNetworkReply *r);
 		bool removeFile();
 		qint64 castCurrentFileSize() const;
-		qint64 byteOfRead() const;
-		qint64 byteOfTotal() const;
-		void setIRead(qint64 i);
-		void setITotal(qint64 i);
 		void load();
+
 		void Zero();
 		qint64 CurrentReadingBytes() const;
 		qint64 CurrentTotalBytes() const;
+		qint64 StartBytes() const;
+		QNetworkReply * Request(const QString &url = QString());
+		QNetworkReply * SetRequest(const QString &url);
+		void SetDownloadManager(VDownloadManager *m = 0);
 
 		void setVid(const QString &vid);
 		void setStreamtype(const QString &st);
@@ -125,16 +127,20 @@ Q_SIGNALS:
 		void init();
 		void touch();
 		int RedirectUrl();
+		void SetStartBytes(qint64 i = 0);
+		void UpdatePercent();
 
 	private:
 		QFile *file;
 		QString cpp_name;
 		QNetworkReply *reply;
-		QString cpp_read;
-		QString cpp_total;
-		qint64 iread;
-		qint64 itotal;
+		qint64 cpp_read;
+		qint64 cpp_total;
+		qint64 iStartBytes;
 		int cpp_percent;
+		qint64 iCurrentReading;
+		qint64 iCurrentTotal;
+
 		QString cpp_url;
 		State cpp_state;
 		QString cpp_extName;
@@ -147,8 +153,9 @@ Q_SIGNALS:
 		QString cpp_taskId;
 		QString cpp_source;
 
-		qint64 m_currentReading;
-		qint64 m_currentTotal;
+		VDownloadManager *oManager;
+
+		friend class VDownloadManager;
 };
 
 #endif

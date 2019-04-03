@@ -33,7 +33,7 @@ Rectangle{
 							horizontalAlignment: Text.AlignHCenter;
 							verticalAlignment: Text.AlignVCenter;
 							color:"black";
-							font.pixelSize:18;
+							font.pixelSize: constants.pixel_medium;
 							elide:Text.ElideRight;
 							text:model.name;
 						}
@@ -41,10 +41,9 @@ Rectangle{
 							width:parent.width;
 							height:parent.height / 8;
 							color:"black";
-							font.pixelSize:18;
+							font.pixelSize: constants.pixel_medium;
 							elide:Text.ElideRight;
 							text:qsTr("Video Count") + ": " + model.video_count;
-
 						}
 					}
 					MouseArea{

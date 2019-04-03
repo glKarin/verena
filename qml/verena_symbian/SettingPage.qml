@@ -3,9 +3,6 @@ import com.nokia.symbian 1.1
 import "../js/main.js" as Script
 import "../js/utility.js" as Utility
 
-// BeginC(2019a)
-// SwitchItem TextsItem ButtonItem SelectionItem EditItem
-// End()
 VerenaPage{
 	id:root;
 	title: qsTr("Setting");
@@ -263,11 +260,11 @@ VerenaPage{
 								text: qsTr("General");
 								texts: [
 									{
-										pixelSize: 22,
+										pixelSize: constants.pixel_xl,
 										text: qsTr("You can change card count and size by pinching with two finger, and enter edit mode by holding the card in play history page of Verena Touch Home."),
 									},
 									{
-										pixelSize: 22,
+										pixelSize: constants.pixel_xl,
 										text: qsTr("In option history page of Verena Touch Home, you can remove a history by holding the item, and do this option again by clicking this item."),
 									}
 								]
@@ -351,7 +348,7 @@ VerenaPage{
 								text: qsTr("Browser");
 								texts: [
 									{
-										pixelSize: 22,
+										pixelSize: constants.pixel_xl,
 										text: qsTr("If you want to use desktop user-agent, you can check \"Debian IceWeasel.\""),
 									}
 								]
@@ -379,39 +376,35 @@ VerenaPage{
 								text: qsTr("Version");
 								texts: [
 									{
-										pixelSize: 22,
+										pixelSize: constants.pixel_xl,
 										text: developer.appVersion + " (" + appState() + ")",
 									},
 									{
-										pixelSize: 22,
+										pixelSize: constants.pixel_xl,
 										text: qsTr("Release") + ": " + developer.appRelease,
 									},
 									{
-										pixelSize: 22,
+										pixelSize: constants.pixel_xl,
 										text: qsTr("Code") + ": " + developer.appCode,
 									},
 									{
-										pixelSize: 22,
+										pixelSize: constants.pixel_xl,
 										text: qsTr("Platform") + ": " + developer.osInfo.PLATFORM + " (Qt " + developer.osInfo.V_QT_VERSION + ")",
 									},
 								]
 							}
 							TextsItem{
 								text: qsTr("Changes");
-								nu: true;
+								nu: "  * ";
 								texts: [
 									{
-										pixelSize: 22,
-										text: qsTr("Fixed Youku video parser script(2019/02/09).") + "<br/>" + qsTr("If it responses '403' when requesting video url of Youku, please playing with system media player."),
+										pixelSize: constants.pixel_large,
+										text: qsTr("Fixed youku video downloading and playing with internal player (2019/03/25)."),
 									},
 									{
-										pixelSize: 22,
-										text: qsTr("Add YoukuClient of Harmattan main page."),
+										pixelSize: constants.pixel_large,
+										text: qsTr("Fixed breakpoint downloading error."),
 									},
-									{
-										pixelSize: 22,
-										text: qsTr("Add settings on player page."),
-									}
 								]
 							}
 						}
@@ -424,7 +417,7 @@ VerenaPage{
 								text: qsTr("Warning");
 								texts: [
 									{
-										pixelSize: 22,
+										pixelSize: constants.pixel_xl,
 										text: qsTr("Change request for getting Youku video url parameters."),
 									}
 								]
@@ -521,11 +514,11 @@ VerenaPage{
 								text: "<b>" + qsTr("Thanks") + "</b>";
 								texts: [
 									{
-										pixelSize: 22,
+										pixelSize: constants.pixel_xl,
 										text: qsTr("BaiduTieba") + ": <b><a href='http://tieba.baidu.com/home/main?id=422f44656172e5ad9c9f06'>Dear孜</a></b>",
 									},
 									{
-										pixelSize: 22,
+										pixelSize: constants.pixel_xl,
 										text: qsTr("BaiduTieba") + ": <b><a href='http://tieba.baidu.com/home/main?id=1c58e6a2a6e5bdb1e586b3e5b9bba61a'>梦影决幻</a> Anna icons</b>",
 									}
 								]
@@ -538,27 +531,27 @@ VerenaPage{
 								text: "<b>" + developer.appFName + "</b>";
 								texts: [
 									{
-										pixelSize: 22,
+										pixelSize: constants.pixel_xl,
 										text: "<b>" + qsTr("Verena is a web-video player based on YouKu Open API v2.   You can search, watch and download the videos, shows and playlists of www.youku.com.") + "</b>",
 									},
 									{
-										pixelSize: 22,
+										pixelSize: constants.pixel_xl,
 										text: "<b>" + developer.appDeveloper + " @ 2015 &lt;" + developer.appMail + "&gt;" + "</b>",
 									},
 									{
-										pixelSize: 22,
+										pixelSize: constants.pixel_large,
 										text: "<b>" + qsTr("Download") + ": </b>" + "<b><a href='%1'>OpenRepos(WareHouse)</a>   <a href='%2'>BaiduPan</a></b>".arg(developer.appLink.OPENREPOS_DL).arg(developer.appLink.PANBAIDU_DL),
 									},
 									{
-										pixelSize: 22,
+										pixelSize: constants.pixel_large,
 										text: "<b>TMO: <a href='%1'>%2</a></b>".arg(developer.appLink.TMO).arg("Karin_Zhao"),
 									},
 									{
-										pixelSize: 22,
+										pixelSize: constants.pixel_large,
 										text: "<b>github: <a href='%1'>%2</a></b>".arg(developer.appLink.GITHUB).arg("glKarin/verena"),
 									},
 									{
-										pixelSize: 22,
+										pixelSize: constants.pixel_large,
 										text: "<b>" + qsTr("Contact") + ": </b>" + "<b><a href='mailto:%1'>%2</a></b>".arg(developer.appMail).arg(developer.appMail),
 									},
 								]

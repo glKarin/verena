@@ -140,7 +140,7 @@ VerenaPage{
 		z:1;
 		Text{
 			id:name;
-			font.pixelSize:24;
+			font.pixelSize: constants.pixel_xl;
 			color:"blue";
 			anchors.centerIn:parent;
 			elide:Text.ElideRight;
@@ -244,7 +244,7 @@ VerenaPage{
 							maximumLineCount:2;
 							wrapMode:Text.WrapAnywhere;
 							elide:Text.ElideRight;
-							font.pixelSize:22;
+							font.pixelSize: constants.pixel_large;
 							font.bold: true;
 							text: qobj.username;
 						}

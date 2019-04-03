@@ -19,7 +19,7 @@ Rectangle{
 			width:parent.width / 4 * 3;
 			horizontalAlignment: Text.AlignLeft;
 			verticalAlignment: Text.AlignVCenter;
-			font.pixelSize:24;
+			font.pixelSize: constants.pixel_xl;
 			font.bold: true;
 			color:"blue";
 			elide:Text.ElideRight;
