@@ -55,108 +55,121 @@ src/vdeclarativewebview.cpp\
 src/vdeveloper.cpp \
 src/vstd.cpp
 
-#SOURCES += qtm/qdeclarativevideo.cpp qtm/qdeclarativemediabase.cpp qtm/qpaintervideosurface.cpp #qtm/qpaintervideosurface_mac.mm
-#HEADERS += qtm/qdeclarativevideo_p.h qtm/qdeclarativemediabase_p.h qtm/qpaintervideosurface_p.h qtm/qdeclarativemediametadata_p.h qtm/qpaintervideosurface_mac_p.h
+DEFINES += _KARIN_MM_EXTENSIONS
+
+contains(DEFINES, _KARIN_MM_EXTENSIONS) {
+INCLUDEPATH += qtm
+HEADERS += \
+qtm/qdeclarativemediabase_p.h \
+qtm/qdeclarativevideo_p.h \
+qtm/qdeclarativemediametadata_p.h \
+qtm/qpaintervideosurface_p.h
+
+SOURCES += \
+qtm/qdeclarativemediabase.cpp \
+qtm/qdeclarativevideo.cpp \
+qtm/qpaintervideosurface.cpp
+}
 
 simulator{
-	DEFINES += VDEBUG
-	DEFINES += VDEBUG _S_TEST
+DEFINES += VDEBUG
+DEFINES += VDEBUG _S_TEST
 
-	TARGET.CAPABILITY += NetworkServices
-	vendorinfo = "%{\"Karin\"}" ":\"Karin\""
-	CONFIG += qt-components
-	CONFIG += localize_deployment
+TARGET.CAPABILITY += NetworkServices
+vendorinfo = "%{\"Karin\"}" ":\"Karin\""
+CONFIG += qt-components
+CONFIG += localize_deployment
 
-	#    TARGET.UID3 = 0x2006622C
-	TARGET.CAPABILITY *= \
-	NetworkServices \
-	ReadUserData \
-	WriteUserData \
-	SwEvent\
-	LocalServices\
-	UserEnvironment
+#    TARGET.UID3 = 0x2006622C
+TARGET.CAPABILITY *= \
+NetworkServices \
+ReadUserData \
+WriteUserData \
+SwEvent\
+LocalServices\
+UserEnvironment
 
-	TARGET.EPOCHEAPSIZE = 0x40000 0x4000000
+TARGET.EPOCHEAPSIZE = 0x40000 0x4000000
 
-	LIBS *= -lapparc -lws32 -lapgrfx
-	RESOURCES += verena.qrc
+LIBS *= -lapparc -lws32 -lapgrfx
+RESOURCES += verena.qrc
 
-	my_deployment.pkg_prerules += vendorinfo
-	DEPLOYMENT += my_deployment
-        VERSION = 0.9.021
-	# Symbian have a different syntax
-	#DEFINES -= VER=\\\"$$VERSION\\\"
-	DEFINES += VER=\"$$VERSION\"
+my_deployment.pkg_prerules += vendorinfo
+DEPLOYMENT += my_deployment
+VERSION = 0.9.051
+# Symbian have a different syntax
+#DEFINES -= VER=\\\"$$VERSION\\\"
+DEFINES += VER=\"$$VERSION\"
 
-	folder_01.source = qml/verena_symbian
-	folder_01.target = qml
-	DEPLOYMENTFOLDERS = folder_01
+folder_01.source = qml/verena_symbian
+folder_01.target = qml
+DEPLOYMENTFOLDERS = folder_01
 }
 
 symbian {
-	DEFINES += _SYMBIAN _S_TEST
+DEFINES += _SYMBIAN _S_TEST
 
-	TARGET.CAPABILITY += NetworkServices
-	vendorinfo = "%{\"Karin\"}" ":\"Karin\""
-	CONFIG += qt-components
-	CONFIG += localize_deployment
+TARGET.CAPABILITY += NetworkServices
+vendorinfo = "%{\"Karin\"}" ":\"Karin\""
+CONFIG += qt-components
+CONFIG += localize_deployment
 
-	#    TARGET.UID3 = 0x2006622C
-	TARGET.CAPABILITY *= \
-	NetworkServices \
-	ReadUserData \
-	WriteUserData \
-	SwEvent\
-	LocalServices\
-	UserEnvironment
+#    TARGET.UID3 = 0x2006622C
+TARGET.CAPABILITY *= \
+NetworkServices \
+ReadUserData \
+WriteUserData \
+SwEvent\
+LocalServices\
+UserEnvironment
 
-	TARGET.EPOCHEAPSIZE = 0x40000 0x4000000
+TARGET.EPOCHEAPSIZE = 0x40000 0x4000000
 
-	LIBS *= -lapparc -lws32 -lapgrfx
-	RESOURCES += verena.qrc
+LIBS *= -lapparc -lws32 -lapgrfx
+RESOURCES += verena.qrc
 
-	my_deployment.pkg_prerules += vendorinfo
-	DEPLOYMENT += my_deployment
-        VERSION = 0.9.02
-	# Symbian have a different syntax
-	#DEFINES -= VER=\\\"$$VERSION\\\"
-	DEFINES += VER=\"$$VERSION\"
+my_deployment.pkg_prerules += vendorinfo
+DEPLOYMENT += my_deployment
+VERSION = 0.9.05
+# Symbian have a different syntax
+#DEFINES -= VER=\\\"$$VERSION\\\"
+DEFINES += VER=\"$$VERSION\"
 
-	folder_01.source = qml/verena_symbian
-	folder_01.target = qml
-	DEPLOYMENTFOLDERS = folder_01
+folder_01.source = qml/verena_symbian
+folder_01.target = qml
+DEPLOYMENTFOLDERS = folder_01
 }
 
 contains(MEEGO_EDITION,harmattan){
-        #DEFINES += VDEBUG
-	DEFINES += VHAS_MAEMO_MEEGOTOUCH_INTERFACES_DEV _HARMATTAN
-	OBJECTS_DIR = .obj
-	MOC_DIR = .moc
+# DEFINES += VDEBUG
+DEFINES += VHAS_MAEMO_MEEGOTOUCH_INTERFACES_DEV _HARMATTAN
+OBJECTS_DIR = .obj
+MOC_DIR = .moc
 
-	CONFIG += qdeclarative-boostable
-	CONFIG += videosuiteinterface-maemo-meegotouch  #video suite
-        CONFIG += meegotouch
-	splash.files = res/verena_splash.png
-	splash.path = /opt/verena/res
-	INSTALLS += splash
-	#CONFIG += debug_and_release
+CONFIG += qdeclarative-boostable
+CONFIG += videosuiteinterface-maemo-meegotouch  #video suite
+CONFIG += meegotouch
+splash.files = res/verena_splash.png
+splash.path = /opt/verena/res
+INSTALLS += splash
+#CONFIG += debug_and_release
 
-        translation.files = i18n/verena.zh_CN.ts i18n/verena.zh_CN.qm
-	translation.path = /opt/verena/i18n
-        INSTALLS += translation
+translation.files = i18n/verena.zh_CN.ts i18n/verena.zh_CN.qm
+translation.path = /opt/verena/i18n
+INSTALLS += translation
 
-	OTHER_FILES += \
-			qtc_packaging/debian_harmattan/rules \
-			qtc_packaging/debian_harmattan/README \
-			qtc_packaging/debian_harmattan/manifest.aegis \
-			qtc_packaging/debian_harmattan/copyright \
-			qtc_packaging/debian_harmattan/control \
-			qtc_packaging/debian_harmattan/compat \
-                        qtc_packaging/debian_harmattan/changelog
+OTHER_FILES += \
+qtc_packaging/debian_harmattan/rules \
+qtc_packaging/debian_harmattan/README \
+qtc_packaging/debian_harmattan/manifest.aegis \
+qtc_packaging/debian_harmattan/copyright \
+qtc_packaging/debian_harmattan/control \
+qtc_packaging/debian_harmattan/compat \
+qtc_packaging/debian_harmattan/changelog
 
-                folder_01.source = qml/verena
-                folder_01.target = qml
-                DEPLOYMENTFOLDERS = folder_01
+folder_01.source = qml/verena
+folder_01.target = qml
+DEPLOYMENTFOLDERS = folder_01
 }
 
 folder_js.source = qml/js
@@ -170,7 +183,8 @@ include(qmlapplicationviewer/qmlapplicationviewer.pri)
 qtcAddDeployment()
 
 contains(MEEGO_EDITION,harmattan){
-    icon.files = verena.png
-    icon.path = /usr/share/icons/hicolor/80x80/apps
-    INSTALLS += icon
+icon.files = verena.png
+icon.path = /usr/share/icons/hicolor/80x80/apps
+INSTALLS += icon
 }
+
