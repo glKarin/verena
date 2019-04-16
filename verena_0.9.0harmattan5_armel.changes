@@ -16,9 +16,9 @@ Changes:
    * Fixed youku video downloading and playing with internal player (2019/03/25).
    * Fixed breakpoint downloading error.
 Checksums-Sha1: 
- a449ab60d92534691e2a79cc0955b3f05d93cc5c 583070 verena_0.9.0harmattan5_armel.deb
+ 57fff5fed462f52ef2797d9c79303f8458fec581 583066 verena_0.9.0harmattan5_armel.deb
 Checksums-Sha256: 
- 5b333ad2ccf076d4fcc6d96e98a1cae22d720aa46e43924c56a3228cbb977db7 583070 verena_0.9.0harmattan5_armel.deb
+ ef556b382728be05c46f1a267bc4b17e13a9a1abcd79756d14430b5ab86edf27 583066 verena_0.9.0harmattan5_armel.deb
 Files: 
- 00d072b3191761c1afbdee49f4e9791a 583070 user/other optional verena_0.9.0harmattan5_armel.deb
+ 8e0aafc9e4df53b6d5d1d12c52558788 583066 user/other optional verena_0.9.0harmattan5_armel.deb
 Maemo-Display-Name: verena

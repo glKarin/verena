@@ -81,7 +81,7 @@ var VerenaDatabase = function(name, desc, size){
 				var rs;
 				db.readTransaction(function(tx){
 					try{
-						rs = tx.executeSql('SELECT COUNT(1) AS \'_Count\' FROM KeywordHistory');
+                        rs = tx.executeSql('SELECT COUNT(1) AS \'_Count\' FROM %1'.arg(tname));
 						if(rs.rows.length === 1)
 							rd = rs.rows.item(0)._Count;
 					}catch(e){
