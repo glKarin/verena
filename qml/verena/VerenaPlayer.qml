@@ -1,6 +1,6 @@
 import QtQuick 1.1
 import com.nokia.meego 1.1
-//import QtMultimediaKit 1.1
+import QtMultimediaKit 1.1
 import karin.verena.extensions 1.5
 import QtMobility.systeminfo 1.1
 import "../js/utility.js" as Utility

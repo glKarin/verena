@@ -72,8 +72,8 @@ qtm/qpaintervideosurface.cpp
 }
 
 simulator{
-DEFINES += VDEBUG
-DEFINES += VDEBUG _S_TEST
+#DEFINES += VDEBUG
+DEFINES += _S_TEST
 
 TARGET.CAPABILITY += NetworkServices
 vendorinfo = "%{\"Karin\"}" ":\"Karin\""
@@ -96,7 +96,7 @@ RESOURCES += verena.qrc
 
 my_deployment.pkg_prerules += vendorinfo
 DEPLOYMENT += my_deployment
-VERSION = 0.9.051
+VERSION = 0.9.061
 # Symbian have a different syntax
 #DEFINES -= VER=\\\"$$VERSION\\\"
 DEFINES += VER=\"$$VERSION\"
@@ -130,7 +130,7 @@ RESOURCES += verena.qrc
 
 my_deployment.pkg_prerules += vendorinfo
 DEPLOYMENT += my_deployment
-VERSION = 0.9.05
+VERSION = 0.9.06
 # Symbian have a different syntax
 #DEFINES -= VER=\\\"$$VERSION\\\"
 DEFINES += VER=\"$$VERSION\"
@@ -141,7 +141,7 @@ DEPLOYMENTFOLDERS = folder_01
 }
 
 contains(MEEGO_EDITION,harmattan){
-# DEFINES += VDEBUG
+#DEFINES += VDEBUG
 DEFINES += VHAS_MAEMO_MEEGOTOUCH_INTERFACES_DEV _HARMATTAN
 OBJECTS_DIR = .obj
 MOC_DIR = .moc

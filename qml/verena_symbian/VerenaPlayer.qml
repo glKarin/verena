@@ -1,6 +1,6 @@
 import QtQuick 1.1
 import com.nokia.symbian 1.1
-//import QtMultimediaKit 1.1
+import QtMultimediaKit 1.1
 import karin.verena.extensions 1.5
 import QtMobility.systeminfo 1.1
 import "../js/utility.js" as Utility
@@ -417,11 +417,11 @@ Rectangle{
 									root.orientation = value;
 								}
 							}
-							Button{
+                            VButton{
 								anchors.horizontalCenter: parent.horizontalCenter;
 								text: qsTr("External player");
 								enabled: root.source != "";
-								platformStyle: ButtonStyle {
+                                platformStyle: VButtonStyle {
 									buttonWidth: 200; 
 								}
 								onClicked: {
@@ -437,11 +437,11 @@ Rectangle{
 									}
 								}
 							}
-							Button{
+                            VButton{
 								anchors.horizontalCenter: parent.horizontalCenter;
 								text: qsTr("Copy url");
 								enabled: root.source != "";
-								platformStyle: ButtonStyle {
+                                platformStyle: VButtonStyle {
 									buttonWidth: 200; 
 								}
 								onClicked: {

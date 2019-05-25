@@ -1,3 +1,9 @@
+verena (0.9.0harmattan6) unstable; urgency=low
+
+  * Fixed aegis.
+
+ -- Karin Zhao <beyondk2000@gmail.com>  Sat, 21 May 2019 17:08:13 +0800
+
 verena (0.9.0harmattan5) unstable; urgency=low
 
   * Fixed youku video downloading and playing with internal player (2019/03/25).
